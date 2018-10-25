@@ -12,6 +12,7 @@
 		EA045BAB217CFE33005FF6A6 /* CounterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA045BAA217CFE33005FF6A6 /* CounterListTableViewCell.swift */; };
 		EA28083921809E8C00190E4E /* AutomaticScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA28083821809E8C00190E4E /* AutomaticScreen.swift */; };
 		EA28083C21809F1300190E4E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA28083B21809F1300190E4E /* UIViewExtension.swift */; };
+		EA708A18218265F60002FF4D /* SegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA708A17218265F60002FF4D /* SegmentedControl.xib */; };
 		EA7F7B43217FCBF8009B916B /* DetailVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F7B42217FCBF8009B916B /* DetailVIewModel.swift */; };
 		EA7F7B47217FDDDD009B916B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F7B46217FDDDD009B916B /* CustomSegmentedControl.swift */; };
 		EA7F7B4A21800F39009B916B /* ManualScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7F7B4921800F39009B916B /* ManualScreen.xib */; };
@@ -37,6 +38,7 @@
 		EA045BAA217CFE33005FF6A6 /* CounterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListTableViewCell.swift; sourceTree = "<group>"; };
 		EA28083821809E8C00190E4E /* AutomaticScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticScreen.swift; sourceTree = "<group>"; };
 		EA28083B21809F1300190E4E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		EA708A17218265F60002FF4D /* SegmentedControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedControl.xib; sourceTree = "<group>"; };
 		EA7F7B42217FCBF8009B916B /* DetailVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVIewModel.swift; sourceTree = "<group>"; };
 		EA7F7B46217FDDDD009B916B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		EA7F7B4921800F39009B916B /* ManualScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManualScreen.xib; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				EA7F7B4B218015C9009B916B /* AutomaticScreen.xib */,
 				EA7F7B4D21801732009B916B /* ManualScreen.swift */,
 				EA28083821809E8C00190E4E /* AutomaticScreen.swift */,
+				EA708A17218265F60002FF4D /* SegmentedControl.xib */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				EAF77BEE217BB55B0013F9B6 /* Assets.xcassets in Resources */,
 				EA7F7B4C218015C9009B916B /* AutomaticScreen.xib in Resources */,
 				EAF77BEC217BB55A0013F9B6 /* Main.storyboard in Resources */,
+				EA708A18218265F60002FF4D /* SegmentedControl.xib in Resources */,
 				EA7F7B4A21800F39009B916B /* ManualScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -90,7 +90,9 @@ class SegmentedControl: UIControl{
         
         buttons[0].setTitleColor(selectorTextColor, for: .normal)
         
+        
         let selectorWidth = frame.width/CGFloat(buttonTitles.count)
+        
         selector = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth, height: frame.height))
         selector.backgroundColor = selectorColor
         selector.translatesAutoresizingMaskIntoConstraints = false
@@ -98,14 +100,15 @@ class SegmentedControl: UIControl{
         
         addSubview(selector)
         
-        
+       
         
         
         let sv = UIStackView(arrangedSubviews: buttons)
         sv.axis = .horizontal
         sv.alignment = .fill
-        sv.distribution = .fillProportionally
+//        sv.distribution = .fillProportionally
         sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.distribution = .fillEqually
         
         addSubview(sv)
         sv.topAnchor.constraint(equalTo: topAnchor).isActive = true

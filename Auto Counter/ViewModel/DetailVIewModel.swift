@@ -23,7 +23,7 @@ class DetailViewModel: Countlistener{
         mCounter = counter
         
         mCounterManager = CounterManager()
-        countObservable =  BehaviorSubject<String>(value: String(counter.mCount) )
+        countObservable =  BehaviorSubject<String>(value: String(counter.mCount))
         mCounterManager.addListener(countlistener: self)
         mCounterManager.configureManager(currentValue: Int(counter.mCount) )
        

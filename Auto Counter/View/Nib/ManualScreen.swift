@@ -35,14 +35,16 @@ protocol ManualViewListener {
         super.init(frame: CGRect.zero)  // 4.
         
         print("initing manual screen")
-       xibSetup() // 6.
+//       xibSetup() // 6.
+        
     }
     
-    @IBOutlet weak var counterLabel: UILabel!{
-        didSet {
-            print("labelView: \(String(describing: counterLabel))")
-        }
-    }
+    @IBOutlet weak var counterLabel: UILabel!
+//        {
+//        didSet {
+//            print("labelView: \(String(describing: counterLabel))")
+//        }
+//    }
     
     
     @IBAction func addButton(_ sender: UIButton) {

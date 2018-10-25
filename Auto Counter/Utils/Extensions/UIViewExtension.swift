@@ -105,28 +105,32 @@ import UIKit
 
 extension UIView{
 
-    func xibSetup() {
-        let view = loadFromNib()
-        addSubview(view)
-        stretch(view: view)
-    }
+//    func xibSetup() {
+//        let view = loadFromNib()
+//        addSubview(view)
+//        stretch(view: view)
+//    }
     
 //    2. Loads the view from the nib in the bundle
     /// Method to init the view from a Nib.
     ///
     /// - Returns: Optional UIView initialized from the Nib of the same class name.
-    func loadFromNib<T: UIView>() -> T {
-        let selfType = type(of: self)
-        let bundle = Bundle(for: selfType)
-        let nibName = String(describing: selfType)
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        
-        guard let view = nib.instantiate(withOwner: self, options: nil).first as? T else {
-            fatalError("Error loading nib with name \(nibName) ")
-        }
-        
-        return view
+//    func loadFromNib<T: UIView>() -> T {
+//        let selfType = type(of: self)
+//        let bundle = Bundle(for: selfType)
+//        let nibName = String(describing: selfType)
+//        let nib = UINib(nibName: nibName, bundle: bundle)
+//
+//        guard let view = nib.instantiate(withOwner: self, options: nil).first as? T else {
+//            fatalError("Error loading nib with name \(nibName) ")
+//        }
+//
+//        return view
+//    }
+    class func fromNib<T: UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
+    
     
 //    3. Resizes the loaded view, ready for use
     /// Stretches the input view to the UIView frame using Auto-layout

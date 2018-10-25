@@ -11,9 +11,11 @@ import UIKit
 class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     
     
+    @IBOutlet weak var segmentedControl: SegmentedControl!
     var coordinator:Coordinator!
     
-
+    @IBOutlet weak var segmentedWidthControl: NSLayoutConstraint!
+    
     @IBOutlet weak var containerView: UIView!
     
     var mDetailViewModel: DetailViewModel!
@@ -28,13 +30,18 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+   DispatchQueue.main.async {
+    
+    self.segmentedWidthControl.constant = UIScreen.main.bounds.width/2
+    self.segmentedControl.layoutIfNeeded()
+//    self.segmentedControl.setNeedsUpdateConstraints()
+    }
         addManualScreen()
-//        mDetailViewModel?.countObservable.subscribe(onNext: { count in
-//            print(count)
-//            self.mManualScreen.counterLabel.text = count
-//        })
+        mDetailViewModel?.countObservable.subscribe(onNext: { count in
+            print(count)
+            self.mManualScreen.counterLabel.text = count
+        })
         
         
     }
@@ -78,7 +85,7 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         if(mManualScreen == nil){
             
-            mManualScreen = ManualScreen()
+            mManualScreen = UIView.fromNib()
             mManualScreen.addListener(manualViewListener: self)
             
             
