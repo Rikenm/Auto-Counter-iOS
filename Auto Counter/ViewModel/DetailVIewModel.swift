@@ -46,10 +46,10 @@ class DetailViewModel: Countlistener{
    
     func passValue(value: Int) {
         // send value to the views/VC
-//         print(value)
+
         countObservable.onNext(String(value))
         
-       //view.show(value)
+
     }
     
     

@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+
+protocol AutomaticViewListener {
+    func addCountAutomatic()
+}
+
+
 class AutomaticScreen: UIView {
 
     /*
@@ -17,6 +24,9 @@ class AutomaticScreen: UIView {
         // Drawing code
     }
     */
+    
+    
+    var mAutomaticViewListener:AutomaticViewListener!
     
     required init?(coder aDecoder: NSCoder) {   // 2 - storyboard initializer
         super.init(coder: aDecoder)
@@ -31,9 +41,12 @@ class AutomaticScreen: UIView {
         
     }
     
+    @IBOutlet weak var counterLabel: UILabel!
     
     @IBAction func startButton(_ sender: UIButton) {
         // this starts the automatic counter
+        
+        addPulse()
     }
     
     
@@ -53,6 +66,22 @@ class AutomaticScreen: UIView {
     @IBAction func mute(_ sender: UIButton) {
         
     }
+    
+    
+    func addPulse(){
+        let pulse = Pulsing(numberOfPulse: 10, radius: 100, position: counterLabel.center)
+        pulse.animationDuration = 1
+        pulse.backgroundColor = UIColor.init(red: 38/255, green: 190/255, blue: 242/255, alpha: 1).cgColor
+
+        self.layer.insertSublayer(pulse, below: counterLabel.layer)
+    }
+    
+    
+    func addAutomaticViewListener(automaticViewListener: AutomaticViewListener){
+        
+        mAutomaticViewListener = automaticViewListener
+    }
+    
     
    
 

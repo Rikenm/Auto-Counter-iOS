@@ -81,7 +81,7 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     }
     
     
-    func addCount() {
+    func addCountManual() {
         mDetailViewModel.addCounter()
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ManualViewListener {
-    func addCount()
+    func addCountManual()
 }
 
 @IBDesignable
@@ -40,19 +40,14 @@ protocol ManualViewListener {
     }
     
     @IBOutlet weak var counterLabel: UILabel!
-//        {
-//        didSet {
-//            print("labelView: \(String(describing: counterLabel))")
-//        }
-//    }
-    
+
     
     @IBAction func addButton(_ sender: UIButton) {
         
         
         if(mManualViewListener != nil){
             print("insdie the listener counting")
-            mManualViewListener.addCount()
+            mManualViewListener.addCountManual()
         }else{
             print("listener is nil")
         }
