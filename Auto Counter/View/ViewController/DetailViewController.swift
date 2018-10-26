@@ -32,18 +32,20 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   DispatchQueue.main.async {
-    
-    self.segmentedWidthControl.constant = UIScreen.main.bounds.width/2
-    self.segmentedControl.layoutIfNeeded()
-
-    }
+//   DispatchQueue.main.async {
+//    
+//    self.segmentedWidthControl.constant = UIScreen.main.bounds.width/2
+//    self.segmentedControl.layoutIfNeeded()
+//
+//    }
+        
+        setupNavbar()
         addAutomaticScreen()
         
         
         mDetailViewModel?.countObservable.subscribe(onNext: { count in
             print(count)
-//            self.mManualScreen.counterLabel.text = count
+//            self.mAutomaticScreen.counterLabel.text = count
         })
         
         
@@ -84,16 +86,24 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     }
     
     
+    
+    
     func addManualScreen(){
         containerView.translatesAutoresizingMaskIntoConstraints = false
         if(mManualScreen == nil){
             
             mManualScreen = UIView.fromNib()
             mManualScreen.addListener(manualViewListener: self)
+            mDetailViewModel?.countObservable.subscribe(onNext: { count in
+                print(count)
+                self.mManualScreen.counterLabel.text = count
+            })
             
             
         }
-         mManualScreen.addListener(manualViewListener: self)
+        
+       
+        
         containerView.subviews.forEach { $0.removeFromSuperview()}
         
         containerView.addSubview(mManualScreen)
@@ -146,6 +156,31 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
 //        }else{
 //            print("manual screen is nil")
 //        }
+    }
+    
+    public func setupNavbar(){
+        
+        
+      
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        let titleLabel = UILabel()
+        
+        //attributes for the first part of the string
+        let firstAttr: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 20),
+                                                        .foregroundColor: UIColor.white]
+        
+        
+        let attrString = NSMutableAttributedString(string: mDetailViewModel?.mCounter.mTitle ?? "Item", attributes: firstAttr)
+        
+        titleLabel.attributedText = attrString
+        
+        //finding the bounds of the attributed text and resizing the label accordingly
+        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
+        titleLabel.frame.size = attrString.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, context: nil).size
+        
+        //setting the label as the title view of the navigation bar
+        navigationItem.titleView = titleLabel
     }
     
     

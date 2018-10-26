@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.shared.statusBarStyle = .lightContent
         let navController = UINavigationController()
         
-        navController.navigationBar.barTintColor = UIColor.init(displayP3Red: 39/255, green: 39/255, blue: 39/255, alpha: 1)
+        navController.navigationBar.barTintColor = UIColor.init(displayP3Red: 74/255, green: 73/255, blue: 73/255, alpha: 1)
         
         navController.navigationBar.isTranslucent = false
         

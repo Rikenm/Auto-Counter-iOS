@@ -83,15 +83,28 @@ class ViewController: UIViewController, Storyboarded {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50;
+        return 75;
     }
+    
+    
+    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        var cell = UITableViewCell()
+//        
+//        
+//        cell.preservesSuperviewLayoutMargins = false
+//        cell.separatorInset = UIEdgeInsets.zero
+//        cell.layoutMargins = UIEdgeInsets.zero
+//        
+//        return cell
+//    }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
 //        footerView.backgroundColor = UIColor.blue
         
         
-        footerView.backgroundColor = UIColor.init(displayP3Red: 26/255, green: 46/255, blue: 65/255, alpha: 1)
+        footerView.backgroundColor = UIColor.init(displayP3Red: 22/255, green: 32/255, blue: 43/255, alpha: 1)
         
         let line = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0.7))
         line.backgroundColor = UIColor.init(displayP3Red: 151/255, green: 151/255, blue: 151/255, alpha: 1)
@@ -104,7 +117,7 @@ class ViewController: UIViewController, Storyboarded {
         
         let label = UILabel()
         label.text = "Add counter item by clicking  +"
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 10)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         
