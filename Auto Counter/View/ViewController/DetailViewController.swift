@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     var mDetailViewModel: DetailViewModel!
     
     var mManualScreen:ManualScreen!
+    var mAutomaticScreen: AutomaticScreen!
     
     var mCounter: Counter!{
         didSet{
@@ -35,12 +36,14 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     
     self.segmentedWidthControl.constant = UIScreen.main.bounds.width/2
     self.segmentedControl.layoutIfNeeded()
-//    self.segmentedControl.setNeedsUpdateConstraints()
+
     }
-        addManualScreen()
+        addAutomaticScreen()
+        
+        
         mDetailViewModel?.countObservable.subscribe(onNext: { count in
             print(count)
-            self.mManualScreen.counterLabel.text = count
+//            self.mManualScreen.counterLabel.text = count
         })
         
         
@@ -59,7 +62,7 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
             
 
             
-             addManualScreen()
+             addAutomaticScreen()
              break
             
         case 1:
@@ -110,6 +113,39 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         }else{
             print("manual screen is nil")
         }
+    }
+    
+    
+    
+    func addAutomaticScreen(){
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        if(mAutomaticScreen == nil){
+            
+            mAutomaticScreen = UIView.fromNib()
+//            mAutomaticScreen.addListener(manualViewListener: self)
+            
+            
+        }
+      
+        containerView.subviews.forEach { $0.removeFromSuperview()}
+        
+        containerView.addSubview(mAutomaticScreen)
+        mAutomaticScreen.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            mAutomaticScreen.topAnchor.constraint(equalTo: containerView.topAnchor),
+            mAutomaticScreen.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            mAutomaticScreen.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            mAutomaticScreen.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            ])
+        
+        
+        
+        // inside the observable closure
+//        if(mManualScreen.counterLabel != nil){
+//            mManualScreen.counterLabel.text = String(mDetailViewModel.mCounter.mCount)
+//        }else{
+//            print("manual screen is nil")
+//        }
     }
     
     

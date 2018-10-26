@@ -68,9 +68,7 @@ class SegmentedControl: UIControl{
             
         }
     }
-    
-   
-    
+
     func  updateView(){
         
         buttons.removeAll()
@@ -115,9 +113,6 @@ class SegmentedControl: UIControl{
         sv.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         sv.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         sv.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        
-        
-        
     }
     
     @objc func buttonTapped(button:UIButton){
@@ -136,7 +131,5 @@ class SegmentedControl: UIControl{
         sendActions(for: .valueChanged)
     }
     
-    
-    
-    
+
 }

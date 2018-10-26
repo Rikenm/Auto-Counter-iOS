@@ -17,5 +17,43 @@ class AutomaticScreen: UIView {
         // Drawing code
     }
     */
+    
+    required init?(coder aDecoder: NSCoder) {   // 2 - storyboard initializer
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override init(frame: CGRect) {   // 3 - programmatic initializer
+        super.init(frame: CGRect.zero)  // 4.
+        
+        print("initing automatic  screen")
+        //       xibSetup() // 6.
+        
+    }
+    
+    
+    @IBAction func startButton(_ sender: UIButton) {
+        // this starts the automatic counter
+    }
+    
+    
+    
+  
+    @IBAction func speedDecrease(_ sender: UIButton) {
+    }
+    
+    
+    
+ 
+    @IBAction func speedIncrease(_ sender: UIButton) {
+        
+    }
+    
+    
+    @IBAction func mute(_ sender: UIButton) {
+        
+    }
+    
+   
 
 }
