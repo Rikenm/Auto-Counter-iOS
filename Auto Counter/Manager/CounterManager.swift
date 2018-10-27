@@ -45,17 +45,14 @@ class CounterManager{
      listeners=countlistener
     }
     
-    func startCounter(mTypeOfCounter:TypeOfCounter,time:Int=0){
+    func startCounter(mTypeOfCounter:TypeOfCounter,time:Float=0){
         
         switch (mTypeOfCounter){
         case .automatic:
             
+        
             
-            timer = Timer(timeInterval: TimeInterval(time), repeats: true, block: { [unowned self] (timer) in
-                
-               self.add()
-                
-            })
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(add), userInfo: nil, repeats: true)
             
             
             
@@ -69,16 +66,20 @@ class CounterManager{
     }
     
     func stopCounter(){
+        if(timer != nil){
+        timer.invalidate()
         timer = nil
-        
+        }
         
     }
     
     
-    func add(){
+    @objc func add(){
         
         if  self.mCurrentValue != nil{
             self.mCurrentValue!  += 1
+            
+            print("from the countermanager\(mCurrentValue!)")
             
         }
         if(self.listeners != nil){

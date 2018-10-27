@@ -8,9 +8,8 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
-    
-    
+class DetailViewController: UIViewController, ManualViewListener, AutomaticViewListener,Storyboarded {
+
     @IBOutlet weak var segmentedControl: SegmentedControl!
     var coordinator:Coordinator!
     
@@ -32,22 +31,34 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//   DispatchQueue.main.async {
-//    
-//    self.segmentedWidthControl.constant = UIScreen.main.bounds.width/2
-//    self.segmentedControl.layoutIfNeeded()
-//
-//    }
+
         
         setupNavbar()
         addAutomaticScreen()
         
         
         mDetailViewModel?.countObservable.subscribe(onNext: { count in
-            print(count)
-//            self.mAutomaticScreen.counterLabel.text = count
+            print("automatic",count)
+            self.mAutomaticScreen.counterLabel.text = count
         })
         
+        
+        mDetailViewModel?.singalStateToView.subscribe(onNext:{
+            mCounterState in
+            print(" counter state")
+            
+            // change pulse speed view
+
+            
+//            self.mAutomaticScreen.
+            // change mute/unmute view
+            
+            
+            //change speed view
+            
+            
+        })
+  
         
     }
 
@@ -63,13 +74,12 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         case 0:
             
 
-            
              addAutomaticScreen()
              break
             
         case 1:
            
-
+              pauseButtonClicked()
              addManualScreen()
              break
             
@@ -79,15 +89,24 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         }
         
     }
-    
+    /**  TODO:
+     -Method from  View and ViewControl protocol.
+     **/
     
     func addCountManual() {
-        mDetailViewModel.addCounter()
+        mDetailViewModel.addCounter(mTypeOfCounter:.manaul)
     }
     
     
+    /**  TODO:
+     -Method from View and ViewControl protocol.
+     **/
+    func addCountAutomatic(){
+        
+        mDetailViewModel.addCounter(mTypeOfCounter:.automatic)
+    }
     
-    
+
     func addManualScreen(){
         containerView.translatesAutoresizingMaskIntoConstraints = false
         if(mManualScreen == nil){
@@ -95,8 +114,9 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
             mManualScreen = UIView.fromNib()
             mManualScreen.addListener(manualViewListener: self)
             mDetailViewModel?.countObservable.subscribe(onNext: { count in
-                print(count)
+                 print("manual",count)
                 self.mManualScreen.counterLabel.text = count
+               
             })
             
             
@@ -132,8 +152,7 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         if(mAutomaticScreen == nil){
             
             mAutomaticScreen = UIView.fromNib()
-//            mAutomaticScreen.addListener(manualViewListener: self)
-            
+            mAutomaticScreen.addAutomaticViewListener(automaticViewListener: self)
             
         }
       
@@ -150,12 +169,12 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         
         
         
-        // inside the observable closure
-//        if(mManualScreen.counterLabel != nil){
-//            mManualScreen.counterLabel.text = String(mDetailViewModel.mCounter.mCount)
-//        }else{
-//            print("manual screen is nil")
-//        }
+//         inside the observable closure
+        if(mAutomaticScreen.counterLabel != nil){
+            mAutomaticScreen.counterLabel.text = String(mDetailViewModel.mCounter.mCount)
+        }else{
+            print("manual screen is nil")
+        }
     }
     
     public func setupNavbar(){
@@ -181,6 +200,37 @@ class DetailViewController: UIViewController, ManualViewListener, Storyboarded {
         
         //setting the label as the title view of the navigation bar
         navigationItem.titleView = titleLabel
+    }
+    
+    func playButtonClicked() {
+        //get from view to vc
+      mDetailViewModel.onPlay()
+        
+       
+    }
+    
+    func pauseButtonClicked() {
+        //get from view to vc
+        // called when view events or when we change the segmented control
+        mDetailViewModel.onPause()
+        mAutomaticScreen.stopPulse()
+    }
+    
+    func stateChangedSpeed(speed: SpeedState) {
+        mDetailViewModel?.stateChangedSpeed(speed: speed)
+    }
+    
+    func stateChangedSound(mute: SoundState) {
+        mDetailViewModel?.stateChangedSound(mute: mute)
+    }
+    
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // call the pause in the view model
+        pause()
     }
     
     

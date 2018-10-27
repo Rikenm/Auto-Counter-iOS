@@ -70,6 +70,14 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-yC-11z">
+                            <rect key="frame" x="362" y="458.33333333333331" width="36" height="37.666666666666686"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37.57" id="do9-eZ-axH"/>
+                                <constraint firstAttribute="width" constant="36.100000000000001" id="p8w-JF-GWw"/>
+                            </constraints>
+                            <state key="normal" image="Shape"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -84,6 +92,7 @@
                         <constraint firstItem="FYi-cK-w86" firstAttribute="centerY" secondItem="HCe-Ut-JQ0" secondAttribute="centerY" constant="34.25" id="j6y-yr-eRY"/>
                         <constraint firstItem="HCe-Ut-JQ0" firstAttribute="centerY" secondItem="yt9-lU-E5j" secondAttribute="centerY" id="lGR-8n-Hj5"/>
                         <constraint firstItem="0hC-gC-5lc" firstAttribute="centerY" secondItem="yt9-lU-E5j" secondAttribute="centerY" id="mMT-Wy-BtL"/>
+                        <constraint firstItem="cDK-yC-11z" firstAttribute="trailing" secondItem="gnc-zq-Pd3" secondAttribute="trailing" id="nuf-Fe-t7a"/>
                         <constraint firstItem="g2q-kv-Jt8" firstAttribute="centerX" secondItem="HCe-Ut-JQ0" secondAttribute="centerX" id="pii-mV-z5n"/>
                         <constraint firstItem="HCe-Ut-JQ0" firstAttribute="centerX" secondItem="yt9-lU-E5j" secondAttribute="centerX" id="qqZ-8W-aiy"/>
                         <constraint firstItem="FYi-cK-w86" firstAttribute="leading" secondItem="Fzz-2c-uc3" secondAttribute="leading" constant="5" id="sSG-tx-8t2"/>
@@ -97,6 +106,7 @@
                 <constraint firstItem="uff-3C-GXd" firstAttribute="top" secondItem="yt9-lU-E5j" secondAttribute="bottom" constant="2" id="Byt-Em-rEk"/>
                 <constraint firstItem="uff-3C-GXd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="DQC-9I-xe2"/>
                 <constraint firstItem="uff-3C-GXd" firstAttribute="top" secondItem="yt9-lU-E5j" secondAttribute="bottom" constant="2" id="ESD-C8-aHK"/>
+                <constraint firstItem="uff-3C-GXd" firstAttribute="top" secondItem="cDK-yC-11z" secondAttribute="bottom" constant="16" id="LS1-80-JcT"/>
                 <constraint firstItem="yt9-lU-E5j" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="j9M-EE-wfB"/>
                 <constraint firstItem="yt9-lU-E5j" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="oed-72-axO"/>
                 <constraint firstItem="uff-3C-GXd" firstAttribute="height" secondItem="yt9-lU-E5j" secondAttribute="height" multiplier="1:2.5" id="pGB-cR-A02"/>
@@ -114,6 +124,7 @@
     <resources>
         <image name="Lightning" width="25" height="45"/>
         <image name="Play" width="33" height="33"/>
+        <image name="Shape" width="37" height="38"/>
         <image name="Sound" width="39" height="28"/>
         <image name="tortoise-512" width="52" height="26"/>
     </resources>
