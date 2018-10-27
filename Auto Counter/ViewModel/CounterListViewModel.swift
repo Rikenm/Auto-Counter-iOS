@@ -26,12 +26,12 @@ struct CounterListViewModel{
         // get this model from the realm database and convert it into this model
         var listofCounter = [Counter]()
         
-        listofCounter.append(Counter(title: "Push up", count: 12, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-        listofCounter.append(Counter(title: "Sit up", count: 12, id: 0, counterState: CounterState(speed: .fast, sound: .mute)))
-        listofCounter.append(Counter(title: "Pull up", count: 12, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-        listofCounter.append(Counter(title: "Push up", count: 12, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-        listofCounter.append(Counter(title: "Curls", count: 12, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-        listofCounter.append(Counter(title: "Run A Mile", count: 12, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+        listofCounter.append(Counter(title: "Push up", count: 1, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+        listofCounter.append(Counter(title: "Sit up", count: 10, id: 0, counterState: CounterState(speed: .fast, sound: .mute)))
+        listofCounter.append(Counter(title: "Pull up", count: 22, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+        listofCounter.append(Counter(title: "Push up", count: 2, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+        listofCounter.append(Counter(title: "Curls", count: 40, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+        listofCounter.append(Counter(title: "Run A Mile", count: 100, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
        
         mListofCounters = listofCounter
     }

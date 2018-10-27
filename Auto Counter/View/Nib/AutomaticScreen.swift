@@ -25,12 +25,36 @@ enum PlayState{
 }
 
 
+
+
+
 class AutomaticScreen: UIView {
 
 
     
+    @IBOutlet weak var tortoiseButton: UIButton!
+    
+    @IBOutlet weak var lightingButton: UIButton!
+    
+    @IBOutlet weak var soundButton: UIButton!
+    
+    @IBOutlet weak var normalImage: UIImageView!
+    
+    @IBOutlet weak var containerLabelView: UIView!
+    
     var mAutomaticViewListener:AutomaticViewListener!
     var toggleState:PlayState = .play
+    
+    var speedState: SpeedState!{
+        didSet{
+          
+        }
+    }
+    var muteState: SoundState!{
+        didSet{
+            
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {   // 2 - storyboard initializer
         super.init(coder: aDecoder)
@@ -95,9 +119,16 @@ class AutomaticScreen: UIView {
     @IBAction func speedDecrease(_ sender: UIButton) {
         // change the state
         
-//        mAutomaticViewListener.stateChanged()
+        
+            speedState = SpeedState.slow
+            tortoiseButton.setImage(UIImage(named: "tortoise"), for: .normal)
+            lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
+            normalImage.image = nil
+      
+       
         
         
+      
     }
     
     
@@ -106,15 +137,58 @@ class AutomaticScreen: UIView {
     @IBAction func speedIncrease(_ sender: UIButton) {
         // change the state in the viewmodel
         
-    }
-    
-    
-    @IBAction func mute(_ sender: UIButton) {
-        // mute and unmute 
+        speedState = SpeedState.fast
+         lightingButton.setImage(UIImage(named: "lightingselected"), for: .normal)
+        tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
+        normalImage.image = nil
+        
         
     }
     
     
+    @IBAction func normalSpeed(_ sender: Any) {
+        
+        
+        normalImage.image = UIImage(named: "Target")
+        speedState = SpeedState.normal
+        lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
+         tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
+        
+        
+        
+    }
+    @IBAction func mute(_ sender: UIButton) {
+         //mute and unmute
+        
+      if(muteState == SoundState.mute)
+      {
+        sender.setImage(UIImage(named: "Mute"), for: .normal)
+        muteState = SoundState.unmute
+        
+      }else {
+        sender.setImage(UIImage(named: "Sound"), for: .normal)
+         muteState = SoundState.mute
+        }
+        
+    }
+    
+    
+    @IBAction func muteButton(_ sender: Any) {
+        if(muteState == SoundState.mute)
+        {
+            soundButton.setImage(UIImage(named: "Mute"), for: .normal)
+            muteState = SoundState.unmute
+            
+        }else {
+            soundButton.setImage(UIImage(named: "Sound"), for: .normal)
+            muteState = SoundState.mute
+        }
+    }
+    
+    
+    @IBAction func refreshButton(_ sender: UIButton) {
+        
+    }
     
     
     func addPulse(timerInterval: Float){

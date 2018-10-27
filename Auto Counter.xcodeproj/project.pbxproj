@@ -22,6 +22,8 @@
 		EA7F7B4E21801732009B916B /* ManualScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F7B4D21801732009B916B /* ManualScreen.swift */; };
 		EA813FFE217F9F2600628CCC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA813FFD217F9F2600628CCC /* DetailViewController.swift */; };
 		EA814000217F9FAC00628CCC /* CounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA813FFF217F9FAC00628CCC /* CounterManager.swift */; };
+		EA9BE7202185064B006EDF13 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE71F2185064B006EDF13 /* SoundManager.swift */; };
+		EA9BE722218506D8006EDF13 /* PresistantDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */; };
 		EAF77BE7217BB55A0013F9B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF77BE6217BB55A0013F9B6 /* AppDelegate.swift */; };
 		EAF77BE9217BB55A0013F9B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF77BE8217BB55A0013F9B6 /* ViewController.swift */; };
 		EAF77BEC217BB55A0013F9B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF77BEA217BB55A0013F9B6 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		EA7F7B4D21801732009B916B /* ManualScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualScreen.swift; sourceTree = "<group>"; };
 		EA813FFD217F9F2600628CCC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EA813FFF217F9FAC00628CCC /* CounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterManager.swift; sourceTree = "<group>"; };
+		EA9BE71F2185064B006EDF13 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresistantDataManager.swift; sourceTree = "<group>"; };
 		EAF77BE3217BB55A0013F9B6 /* Auto Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF77BE6217BB55A0013F9B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAF77BE8217BB55A0013F9B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,13 @@
 			path = Nib;
 			sourceTree = "<group>";
 		};
+		EA9BE723218506FD006EDF13 /* DataTranslationLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataTranslationLayer;
+			sourceTree = "<group>";
+		};
 		EAF77BDA217BB55A0013F9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				EA813FFF217F9FAC00628CCC /* CounterManager.swift */,
+				EA9BE71F2185064B006EDF13 /* SoundManager.swift */,
+				EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -259,6 +272,7 @@
 		EAF77C05217BBB820013F9B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA9BE723218506FD006EDF13 /* DataTranslationLayer */,
 				EA045BA5217CF07A005FF6A6 /* Counter.swift */,
 			);
 			path = Model;
@@ -396,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF77BE9217BB55A0013F9B6 /* ViewController.swift in Sources */,
+				EA9BE7202185064B006EDF13 /* SoundManager.swift in Sources */,
 				EA814000217F9FAC00628CCC /* CounterManager.swift in Sources */,
 				EA045BA4217CF04B005FF6A6 /* CounterListViewModel.swift in Sources */,
 				EA7F7B4E21801732009B916B /* ManualScreen.swift in Sources */,
@@ -404,6 +419,7 @@
 				EAF77BFA217BB5960013F9B6 /* RootCoordinator.swift in Sources */,
 				EA30F12821835AF900D44F04 /* Pulsing.swift in Sources */,
 				EAF77BFC217BB68E0013F9B6 /* RootCoordinatorProtocol.swift in Sources */,
+				EA9BE722218506D8006EDF13 /* PresistantDataManager.swift in Sources */,
 				EA28083921809E8C00190E4E /* AutomaticScreen.swift in Sources */,
 				EAF77BE7217BB55A0013F9B6 /* AppDelegate.swift in Sources */,
 				EA7F7B47217FDDDD009B916B /* CustomSegmentedControl.swift in Sources */,

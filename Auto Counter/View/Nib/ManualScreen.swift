@@ -63,6 +63,11 @@ protocol ManualViewListener {
     }
     
     
+    @IBAction func refreshButton(_ sender: UIButton) {
+        
+    }
+    
+    
     
     /*
     // Only override draw() if you perform custom drawing.

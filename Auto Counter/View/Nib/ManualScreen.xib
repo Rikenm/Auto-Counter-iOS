@@ -40,6 +40,9 @@
                                 <constraint firstAttribute="width" constant="37" id="vAQ-qK-dHZ"/>
                             </constraints>
                             <state key="normal" image="Shape"/>
+                            <connections>
+                                <action selector="refreshButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sa4-0R-BGA"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
