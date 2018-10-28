@@ -10,6 +10,7 @@ import UIKit
 
 protocol ManualViewListener {
     func addCountManual()
+    func stateChangedSound(mute:SoundState, play:PlayState)
 }
 
 @IBDesignable
@@ -17,6 +18,14 @@ protocol ManualViewListener {
     
     
     
+    var muteState: SoundState!{
+        didSet{
+            mManualViewListener.stateChangedSound(mute: muteState, play: .pause)
+        }
+    }
+    
+    
+    @IBOutlet weak var muteButton: UIButton!
     
     var mManualViewListener:ManualViewListener!
     
@@ -62,8 +71,50 @@ protocol ManualViewListener {
       
     }
     
+    @IBAction func muteButton(_ sender: UIButton) {
+        if(muteState == SoundState.mute)
+        {
+            muteButton.setImage(UIImage(named: "Mute"), for: .normal)
+            muteState = SoundState.unmute
+            
+        }else {
+            muteButton.setImage(UIImage(named: "Sound"), for: .normal)
+            muteState = SoundState.mute
+        }
+    }
+    
+    
+    @IBAction func muteView(_ sender: Any) {
+        if(muteState == SoundState.mute)
+        {
+            muteButton.setImage(UIImage(named: "Mute"), for: .normal)
+            muteState = SoundState.unmute
+            
+        }else {
+            muteButton.setImage(UIImage(named: "Sound"), for: .normal)
+            muteState = SoundState.mute
+        }
+        
+    }
+    
     
     @IBAction func refreshButton(_ sender: UIButton) {
+        
+    }
+    
+    
+    func changeSoundIcon(soundState: SoundState){
+        
+        if(soundState == SoundState.mute)
+        {
+            muteButton.setImage(UIImage(named: "Mute"), for: .normal)
+            
+            
+        }else {
+            muteButton.setImage(UIImage(named: "Sound"), for: .normal)
+            
+        }
+        
         
     }
     

@@ -34,33 +34,67 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
 
         
         setupNavbar()
+        setupViews()
         addAutomaticScreen()
         
         
-        mDetailViewModel?.countObservable.subscribe(onNext: { count in
-            print("automatic",count)
-            self.mAutomaticScreen.counterLabel.text = count
-        })
+        
+       
         
         
         mDetailViewModel?.singalStateToView.subscribe(onNext:{
             mCounterState in
             print(" counter state")
             
-            // change pulse speed view
-
             
 //            self.mAutomaticScreen.
-            // change mute/unmute view
+            // change mute/unmute icon in the both the views
+            self.mAutomaticScreen.changeSoundIcon(soundState: mCounterState.mSound)
+            self.mManualScreen?.changeSoundIcon(soundState: mCounterState.mSound)
             
             
-            //change speed view
+            
+            //change speedstate icon
+            self.mAutomaticScreen.changeSpeedIcon(speedState: mCounterState.mSpeed)
+            
             
             
         })
   
         
     }
+    
+    func setupViews(){
+        if(mManualScreen == nil){
+            
+            mManualScreen = UIView.fromNib()
+            mManualScreen.addListener(manualViewListener: self)
+            mDetailViewModel?.countObservable.subscribe(onNext: { count in
+                print("manual",count)
+                self.mManualScreen.counterLabel.text = count
+                
+            })
+            
+            
+        }
+        
+        if(mAutomaticScreen == nil){
+            
+            mAutomaticScreen = UIView.fromNib()
+            mAutomaticScreen.addAutomaticViewListener(automaticViewListener: self)
+            mDetailViewModel?.countObservable.subscribe(onNext: { count in
+                print("automatic",count)
+                self.mAutomaticScreen.counterLabel.text = count
+            })
+            
+        }
+        
+        
+    
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -109,21 +143,7 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
 
     func addManualScreen(){
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        if(mManualScreen == nil){
-            
-            mManualScreen = UIView.fromNib()
-            mManualScreen.addListener(manualViewListener: self)
-            mDetailViewModel?.countObservable.subscribe(onNext: { count in
-                 print("manual",count)
-                self.mManualScreen.counterLabel.text = count
-               
-            })
-            
-            
-        }
-        
-       
-        
+        setupViews()
         containerView.subviews.forEach { $0.removeFromSuperview()}
         
         containerView.addSubview(mManualScreen)
@@ -148,13 +168,7 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
     
     
     func addAutomaticScreen(){
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        if(mAutomaticScreen == nil){
-            
-            mAutomaticScreen = UIView.fromNib()
-            mAutomaticScreen.addAutomaticViewListener(automaticViewListener: self)
-            
-        }
+      setupViews()
       
         containerView.subviews.forEach { $0.removeFromSuperview()}
         
@@ -216,12 +230,12 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
         mAutomaticScreen.stopPulse()
     }
     
-    func stateChangedSpeed(speed: SpeedState) {
-        mDetailViewModel?.stateChangedSpeed(speed: speed)
+    func stateChangedSpeed(speed: SpeedState, play: PlayState) {
+        mDetailViewModel?.stateChangedSpeed(speed: speed, playState: play)
     }
     
-    func stateChangedSound(mute: SoundState) {
-        mDetailViewModel?.stateChangedSound(mute: mute)
+    func stateChangedSound(mute: SoundState,play: PlayState) {
+        mDetailViewModel?.stateChangedSound(mute: mute, playState: play)
     }
     
     

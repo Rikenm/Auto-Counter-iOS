@@ -22,14 +22,18 @@ class DetailViewModel: Countlistener{
     
     var mCounterManager:CounterManager
     
+    var mSoundManager: SoundManager
+    
     init(counter: Counter){
         mCounter = counter
         
         mCounterManager = CounterManager()
         countObservable =  BehaviorSubject<String>(value: String(counter.mCount))
         singalStateToView = BehaviorSubject<CounterState>(value: counter.mCounterState)
+        mSoundManager = SoundManager()
         mCounterManager.addListener(countlistener: self)
-        mCounterManager.configureManager(currentValue: Int(counter.mCount) )
+        mCounterManager.configureManager(currentValue: Int(counter.mCount))
+       
   
     }
     
@@ -60,6 +64,12 @@ class DetailViewModel: Countlistener{
         mCounter.mCount = value
         countObservable.onNext(String(value))
         
+        if(mCounter.mCounterState.mSound == .unmute){
+            
+            mSoundManager.speak(stringToSpeak: String(value))
+            
+        }
+        
     }
     
     
@@ -83,24 +93,35 @@ class DetailViewModel: Countlistener{
     }
     
     
-    func stateChangedSpeed(speed: SpeedState) {
+    func stateChangedSpeed(speed: SpeedState, playState: PlayState) {
        mCounter.mCounterState.mSpeed = speed
-        
         singalStateToView.onNext(mCounter.mCounterState)
-          mCounterManager.configureManager(currentValue: Int(mCounter.mCount) )
         onPause()
-        onPlay()
+          mCounterManager.configureManager(currentValue: Int(mCounter.mCount))
+        
+        
+        
+        if(playState == .play){
+            onPlay()
+            
+        }
        
     }
     
-    func stateChangedSound(mute: SoundState) {
+    func stateChangedSound(mute: SoundState, playState: PlayState) {
         mCounter.mCounterState.mSound = mute
          singalStateToView.onNext(mCounter.mCounterState)
-          mCounterManager.configureManager(currentValue: Int(mCounter.mCount) )
         onPause()
-        onPlay()
+          mCounterManager.configureManager(currentValue: Int(mCounter.mCount) )
+        
+        if(playState == .play){
+            onPlay()
+            
+        }
         
     }
+    
+    
     
     
 

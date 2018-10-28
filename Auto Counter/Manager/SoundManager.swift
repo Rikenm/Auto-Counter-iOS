@@ -7,12 +7,24 @@
 //
 
 import Foundation
+import AVFoundation
+
 
 
 class SoundManager{
     
-    
+   var mAVSpeechUtterance: AVSpeechUtterance!
     init(){
+     
+    }
+    
+    
+    func speak(stringToSpeak: String){
+        mAVSpeechUtterance = AVSpeechUtterance(string: stringToSpeak)
+        mAVSpeechUtterance.rate = 0.50
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(mAVSpeechUtterance)
+        
         
     }
     

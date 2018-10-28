@@ -14,12 +14,12 @@ protocol AutomaticViewListener {
     func addCountAutomatic()
     func playButtonClicked()
     func pauseButtonClicked()
-    func stateChangedSpeed(speed:SpeedState)
-    func stateChangedSound(mute:SoundState)
+    func stateChangedSpeed(speed:SpeedState, play: PlayState)
+    func stateChangedSound(mute:SoundState, play:PlayState)
 }
 
 enum PlayState{
-    
+    case start
     case play
     case pause
 }
@@ -43,16 +43,17 @@ class AutomaticScreen: UIView {
     @IBOutlet weak var containerLabelView: UIView!
     
     var mAutomaticViewListener:AutomaticViewListener!
-    var toggleState:PlayState = .play
+    var toggleState:PlayState = .start
     
     var speedState: SpeedState!{
         didSet{
-          
+            
+          mAutomaticViewListener.stateChangedSpeed(speed: speedState, play: toggleState)
         }
     }
     var muteState: SoundState!{
         didSet{
-            
+            mAutomaticViewListener.stateChangedSound(mute: muteState, play: toggleState)
         }
     }
     
@@ -75,11 +76,22 @@ class AutomaticScreen: UIView {
         // this starts the automatic counter
          let playBtn = sender as UIButton
         
+        
+        
         if toggleState == .play {
             play()
             toggleState = .pause
             playBtn.setImage(UIImage(named:"Pause"),for:.normal)
-        } else {
+            
+        }else if(toggleState == .start){
+             playBtn.setImage(UIImage(named:"Pause"),for:.normal)
+             play()
+            toggleState = .pause
+            
+            
+        }
+        else {
+             print("pause")
             pause()
             toggleState = .play
             playBtn.setImage(UIImage(named: "Play"),for:.normal)
@@ -95,7 +107,11 @@ class AutomaticScreen: UIView {
         if(mAutomaticViewListener != nil){
             
             mAutomaticViewListener.addCountAutomatic()
+        }else{
+            print("automatic counter listener is null")
         }
+        
+        
     }
     
     func pause(){
@@ -107,27 +123,18 @@ class AutomaticScreen: UIView {
         
     }
     
-    
-    
     func addPulseFromVC(timerInterval:Float){
         addPulse(timerInterval: timerInterval)
     }
     
-    
-    
-  
+
     @IBAction func speedDecrease(_ sender: UIButton) {
         // change the state
         
         
             speedState = SpeedState.slow
-            tortoiseButton.setImage(UIImage(named: "tortoise"), for: .normal)
-            lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
-            normalImage.image = nil
-      
-       
-        
-        
+
+ 
       
     }
     
@@ -138,51 +145,42 @@ class AutomaticScreen: UIView {
         // change the state in the viewmodel
         
         speedState = SpeedState.fast
-         lightingButton.setImage(UIImage(named: "lightingselected"), for: .normal)
-        tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
-        normalImage.image = nil
-        
-        
+
+  
     }
     
     
     @IBAction func normalSpeed(_ sender: Any) {
         
-        
-        normalImage.image = UIImage(named: "Target")
         speedState = SpeedState.normal
-        lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
-         tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
-        
-        
-        
+
     }
     @IBAction func mute(_ sender: UIButton) {
          //mute and unmute
-        
-      if(muteState == SoundState.mute)
-      {
-        sender.setImage(UIImage(named: "Mute"), for: .normal)
-        muteState = SoundState.unmute
-        
-      }else {
-        sender.setImage(UIImage(named: "Sound"), for: .normal)
-         muteState = SoundState.mute
-        }
+        print("button mute")
+     mute()
         
     }
     
     
     @IBAction func muteButton(_ sender: Any) {
+         print("mute view")
+       mute()
+    }
+    
+    
+    func mute(){
         if(muteState == SoundState.mute)
         {
-            soundButton.setImage(UIImage(named: "Mute"), for: .normal)
+//
             muteState = SoundState.unmute
             
         }else {
-            soundButton.setImage(UIImage(named: "Sound"), for: .normal)
+//
             muteState = SoundState.mute
         }
+        
+        
     }
     
     
@@ -209,9 +207,58 @@ class AutomaticScreen: UIView {
     }
     
     
+    
+    
     func addAutomaticViewListener(automaticViewListener: AutomaticViewListener){
         
         mAutomaticViewListener = automaticViewListener
+    }
+    
+    
+    
+    
+    
+    // from vc to this view
+    
+    
+    func changeSpeedIcon(speedState: SpeedState){
+        
+        
+        if(speedState == SpeedState.fast){
+            
+            lightingButton.setImage(UIImage(named: "lightingselected"), for: .normal)
+            tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
+            normalImage.image = nil
+            
+            
+        }else if(speedState == SpeedState.normal){
+            normalImage.image = UIImage(named: "Target")
+            lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
+            tortoiseButton.setImage(UIImage(named: "tortoise-512"), for: .normal)
+            
+        }else{
+          
+            tortoiseButton.setImage(UIImage(named: "tortoise"), for: .normal)
+            lightingButton.setImage(UIImage(named: "lightingunselected"), for: .normal)
+            normalImage.image = nil
+        }
+    
+    }
+    
+    
+    func changeSoundIcon(soundState: SoundState){
+        
+        if(soundState == SoundState.mute)
+        {
+            soundButton.setImage(UIImage(named: "Mute"), for: .normal)
+            
+            
+        }else {
+            soundButton.setImage(UIImage(named: "Sound"), for: .normal)
+            
+        }
+        
+        
     }
     
     
