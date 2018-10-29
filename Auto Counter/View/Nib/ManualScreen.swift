@@ -11,6 +11,7 @@ import UIKit
 protocol ManualViewListener {
     func addCountManual()
     func stateChangedSound(mute:SoundState, play:PlayState)
+    func resetCounter(play:PlayState)
 }
 
 @IBDesignable
@@ -99,6 +100,7 @@ protocol ManualViewListener {
     
     
     @IBAction func refreshButton(_ sender: UIButton) {
+        mManualViewListener.resetCounter(play: .pause)
         
     }
     

@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-enum SpeedState: Float{
-    case normal = 5.0
-    case fast = 1.0
-    case slow = 10.0
+@objc enum SpeedState: Int{
+    
+    case normal = 5
+    case fast = 1
+    case slow = 10
     
 }
 
 
-enum SoundState: Int{
+@objc enum SoundState: Int{
     
     
     
@@ -24,36 +26,42 @@ enum SoundState: Int{
     case unmute = 1
 }
 
-struct CounterState{
-    var mSpeed: SpeedState
-    var mSound: SoundState
+class CounterState: Object{
+    @objc dynamic  var mSpeed: SpeedState = .normal
+     @objc dynamic var mSound: SoundState = .mute
     
-    init(speed:SpeedState,sound:SoundState ){
-        mSpeed = speed
-        mSound = sound
-    }
+//    init(speed:SpeedState,sound:SoundState ){
+//        mSpeed = speed
+//        mSound = sound
+//    }
+    
     
 }
 
 
 
-struct Counter{
+class Counter: Object{
     // model
     // data type
     
-    var mTitle: String
-    var mCount: Int
-    var mId: Int
-    var mCounterState: CounterState
+    @objc dynamic var mTitle: String = ""
+     @objc dynamic var mCount: Int = 0
+     @objc dynamic var mId = UUID().uuidString
+     @objc dynamic var mCounterState: CounterState = CounterState()
+    
+    override static func primaryKey() -> String? {
+        return "mId"
+    }
     
     
     //add speedState and soundstate
     
-    init(title:String,count:Int, id: Int, counterState: CounterState){
-        mTitle = title
-        mCount = count
-        mId = id
-       mCounterState = counterState
-    }
-    
+//    init(title:String,count:Int, id: Int, counterState: CounterState){
+//        mTitle = title
+//        mCount = count
+//        mId = id
+//       mCounterState = counterState
+//    }
+
 }
+

@@ -8,6 +8,7 @@ target 'Auto Counter' do
   # Pods for Auto Counter
     pod 'RxSwift',    '~> 4.0'
     pod 'RxCocoa',    '~> 4.0'
+    pod 'RealmSwift'	 	
 
 
 

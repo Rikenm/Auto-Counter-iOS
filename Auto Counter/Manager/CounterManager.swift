@@ -45,7 +45,7 @@ class CounterManager{
      listeners=countlistener
     }
     
-    func startCounter(mTypeOfCounter:TypeOfCounter,time:Float=0){
+    func startCounter(mTypeOfCounter:TypeOfCounter,time:Int=0){
         
         switch (mTypeOfCounter){
         case .automatic:

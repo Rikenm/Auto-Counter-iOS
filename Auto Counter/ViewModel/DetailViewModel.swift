@@ -11,7 +11,6 @@ import RxSwift
 
 
 
-
 class DetailViewModel: Countlistener{
 
     let countObservable: BehaviorSubject<String>
@@ -34,7 +33,8 @@ class DetailViewModel: Countlistener{
         mCounterManager.addListener(countlistener: self)
         mCounterManager.configureManager(currentValue: Int(counter.mCount))
        
-  
+
+        
     }
     
     /**  TODO:
@@ -45,10 +45,9 @@ class DetailViewModel: Countlistener{
    func addCounter(mTypeOfCounter:TypeOfCounter){
         // vc triggers to add . u add and send it to the views
 
-    let time: Float = mTypeOfCounter == .automatic ? mCounter.mCounterState.mSpeed.rawValue : 0
-    mCounterManager.startCounter(mTypeOfCounter: mTypeOfCounter, time: time)
-        
-        
+        let time: Int = mTypeOfCounter == .automatic ? mCounter.mCounterState.mSpeed.rawValue : 0
+        mCounterManager.startCounter(mTypeOfCounter: mTypeOfCounter, time: time)
+    
     }
     
 
@@ -120,10 +119,19 @@ class DetailViewModel: Countlistener{
         }
         
     }
-    
-    
-    
-    
 
- 
+    func resetCounter(playState: PlayState){
+        onPause()
+        mCounter.mCount = 0
+        countObservable.onNext(String(0))
+         mCounterManager.configureManager(currentValue: Int(0))
+        
+        if(playState == .play){
+            onPlay()
+            
+        }
+        
+        
+    }
+
 }

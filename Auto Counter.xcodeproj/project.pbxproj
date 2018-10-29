@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DE3EFB46EE8DF72EDED39E7 /* Pods_Auto_Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D678EC0B33FE3F7F7D7E0FD /* Pods_Auto_Counter.framework */; };
+		0E36EE1A61FCE9BF1A03DE6D /* Pods_Auto_Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ED6E849EFCAAE7D75DC25D /* Pods_Auto_Counter.framework */; };
 		EA045BA4217CF04B005FF6A6 /* CounterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA045BA3217CF04B005FF6A6 /* CounterListViewModel.swift */; };
 		EA045BA6217CF07A005FF6A6 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA045BA5217CF07A005FF6A6 /* Counter.swift */; };
 		EA045BAB217CFE33005FF6A6 /* CounterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA045BAA217CFE33005FF6A6 /* CounterListTableViewCell.swift */; };
@@ -24,6 +24,8 @@
 		EA814000217F9FAC00628CCC /* CounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA813FFF217F9FAC00628CCC /* CounterManager.swift */; };
 		EA9BE7202185064B006EDF13 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE71F2185064B006EDF13 /* SoundManager.swift */; };
 		EA9BE722218506D8006EDF13 /* PresistantDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */; };
+		EAB232BB2186C27E006F9345 /* VMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB232BA2186C27E006F9345 /* VMFactory.swift */; };
+		EADB82EE2186259D0070BFF2 /* PresistantDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADB82ED2186259D0070BFF2 /* PresistantDataManagerProtocol.swift */; };
 		EAF77BE7217BB55A0013F9B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF77BE6217BB55A0013F9B6 /* AppDelegate.swift */; };
 		EAF77BE9217BB55A0013F9B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF77BE8217BB55A0013F9B6 /* ViewController.swift */; };
 		EAF77BEC217BB55A0013F9B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF77BEA217BB55A0013F9B6 /* Main.storyboard */; };
@@ -34,9 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1823A24034D6969D239AA635 /* Pods-Auto Counter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto Counter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter.release.xcconfig"; sourceTree = "<group>"; };
-		7D678EC0B33FE3F7F7D7E0FD /* Pods_Auto_Counter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Auto_Counter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D94B6B0B629A5EEF118B105A /* Pods-Auto Counter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto Counter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter.debug.xcconfig"; sourceTree = "<group>"; };
+		20F1D214C42625EB006F39DB /* Pods-Auto Counter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto Counter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter.release.xcconfig"; sourceTree = "<group>"; };
+		322B0DF2BD88A1740DE09E05 /* Pods-Auto Counter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto Counter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter.debug.xcconfig"; sourceTree = "<group>"; };
+		E8ED6E849EFCAAE7D75DC25D /* Pods_Auto_Counter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Auto_Counter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA045BA3217CF04B005FF6A6 /* CounterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListViewModel.swift; sourceTree = "<group>"; };
 		EA045BA5217CF07A005FF6A6 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		EA045BAA217CFE33005FF6A6 /* CounterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListTableViewCell.swift; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		EA813FFF217F9FAC00628CCC /* CounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterManager.swift; sourceTree = "<group>"; };
 		EA9BE71F2185064B006EDF13 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresistantDataManager.swift; sourceTree = "<group>"; };
+		EAB232BA2186C27E006F9345 /* VMFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFactory.swift; sourceTree = "<group>"; };
+		EADB82ED2186259D0070BFF2 /* PresistantDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresistantDataManagerProtocol.swift; sourceTree = "<group>"; };
 		EAF77BE3217BB55A0013F9B6 /* Auto Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF77BE6217BB55A0013F9B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAF77BE8217BB55A0013F9B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,18 +73,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DE3EFB46EE8DF72EDED39E7 /* Pods_Auto_Counter.framework in Frameworks */,
+				0E36EE1A61FCE9BF1A03DE6D /* Pods_Auto_Counter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D732162BA4E0E23D9937948 /* Pods */ = {
+		BC4CBC1E9BAFAEB73138004F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D94B6B0B629A5EEF118B105A /* Pods-Auto Counter.debug.xcconfig */,
-				1823A24034D6969D239AA635 /* Pods-Auto Counter.release.xcconfig */,
+				E8ED6E849EFCAAE7D75DC25D /* Pods_Auto_Counter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C23BFB7FF23E5B45239C23F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				322B0DF2BD88A1740DE09E05 /* Pods-Auto Counter.debug.xcconfig */,
+				20F1D214C42625EB006F39DB /* Pods-Auto Counter.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -152,13 +164,29 @@
 			path = DataTranslationLayer;
 			sourceTree = "<group>";
 		};
+		EAB232B92186C26A006F9345 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				EAB232BA2186C27E006F9345 /* VMFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		EADB82EB218625760070BFF2 /* Manager Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EADB82ED2186259D0070BFF2 /* PresistantDataManagerProtocol.swift */,
+			);
+			path = "Manager Protocol";
+			sourceTree = "<group>";
+		};
 		EAF77BDA217BB55A0013F9B6 = {
 			isa = PBXGroup;
 			children = (
 				EAF77BE5217BB55A0013F9B6 /* Auto Counter */,
 				EAF77BE4217BB55A0013F9B6 /* Products */,
-				0D732162BA4E0E23D9937948 /* Pods */,
-				ED02EC829572FC3D144A81AF /* Frameworks */,
+				C23BFB7FF23E5B45239C23F8 /* Pods */,
+				BC4CBC1E9BAFAEB73138004F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +264,7 @@
 		EAF77C01217BB9EF0013F9B6 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				EADB82EB218625760070BFF2 /* Manager Protocol */,
 				EA813FFF217F9FAC00628CCC /* CounterManager.swift */,
 				EA9BE71F2185064B006EDF13 /* SoundManager.swift */,
 				EA9BE721218506D8006EDF13 /* PresistantDataManager.swift */,
@@ -263,6 +292,7 @@
 		EAF77C04217BBB710013F9B6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EAB232B92186C26A006F9345 /* Factory */,
 				EA30F12621835ACA00D44F04 /* Animation */,
 				EA28083A21809EE800190E4E /* Extensions */,
 			);
@@ -278,14 +308,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		ED02EC829572FC3D144A81AF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7D678EC0B33FE3F7F7D7E0FD /* Pods_Auto_Counter.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,11 +315,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAF77BF5217BB55B0013F9B6 /* Build configuration list for PBXNativeTarget "Auto Counter" */;
 			buildPhases = (
-				DF2B07F3D4C8A49B8488159B /* [CP] Check Pods Manifest.lock */,
+				25A986726A233AD4088722BA /* [CP] Check Pods Manifest.lock */,
 				EAF77BDF217BB55A0013F9B6 /* Sources */,
 				EAF77BE0217BB55A0013F9B6 /* Frameworks */,
 				EAF77BE1217BB55A0013F9B6 /* Resources */,
-				9323EA3B8D3FBEEBE508D1EC /* [CP] Embed Pods Frameworks */,
+				FA2B6CFE40C1CDB6EBFEE8A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,27 +386,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9323EA3B8D3FBEEBE508D1EC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DF2B07F3D4C8A49B8488159B /* [CP] Check Pods Manifest.lock */ = {
+		25A986726A233AD4088722BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -402,6 +404,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FA2B6CFE40C1CDB6EBFEE8A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Auto Counter/Pods-Auto Counter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -411,11 +437,13 @@
 			files = (
 				EAF77BE9217BB55A0013F9B6 /* ViewController.swift in Sources */,
 				EA9BE7202185064B006EDF13 /* SoundManager.swift in Sources */,
+				EADB82EE2186259D0070BFF2 /* PresistantDataManagerProtocol.swift in Sources */,
 				EA814000217F9FAC00628CCC /* CounterManager.swift in Sources */,
 				EA045BA4217CF04B005FF6A6 /* CounterListViewModel.swift in Sources */,
 				EA7F7B4E21801732009B916B /* ManualScreen.swift in Sources */,
 				EA28083C21809F1300190E4E /* UIViewExtension.swift in Sources */,
 				EA045BA6217CF07A005FF6A6 /* Counter.swift in Sources */,
+				EAB232BB2186C27E006F9345 /* VMFactory.swift in Sources */,
 				EAF77BFA217BB5960013F9B6 /* RootCoordinator.swift in Sources */,
 				EA30F12821835AF900D44F04 /* Pulsing.swift in Sources */,
 				EAF77BFC217BB68E0013F9B6 /* RootCoordinatorProtocol.swift in Sources */,
@@ -567,7 +595,7 @@
 		};
 		EAF77BF6217BB55B0013F9B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D94B6B0B629A5EEF118B105A /* Pods-Auto Counter.debug.xcconfig */;
+			baseConfigurationReference = 322B0DF2BD88A1740DE09E05 /* Pods-Auto Counter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -586,7 +614,7 @@
 		};
 		EAF77BF7217BB55B0013F9B6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1823A24034D6969D239AA635 /* Pods-Auto Counter.release.xcconfig */;
+			baseConfigurationReference = 20F1D214C42625EB006F39DB /* Pods-Auto Counter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

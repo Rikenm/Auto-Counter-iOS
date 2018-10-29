@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController, ManualViewListener, AutomaticViewListener,Storyboarded {
+  
 
     @IBOutlet weak var segmentedControl: SegmentedControl!
     var coordinator:Coordinator!
@@ -237,6 +238,15 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
     func stateChangedSound(mute: SoundState,play: PlayState) {
         mDetailViewModel?.stateChangedSound(mute: mute, playState: play)
     }
+    
+    
+    func resetCounter(play: PlayState) {
+        mDetailViewModel.resetCounter(playState: play)
+    }
+    
+    
+    
+    
     
     
     

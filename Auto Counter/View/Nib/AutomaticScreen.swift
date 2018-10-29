@@ -16,16 +16,14 @@ protocol AutomaticViewListener {
     func pauseButtonClicked()
     func stateChangedSpeed(speed:SpeedState, play: PlayState)
     func stateChangedSound(mute:SoundState, play:PlayState)
+    func resetCounter(play:PlayState)
 }
 
 enum PlayState{
     case start
-    case play
     case pause
+    case play
 }
-
-
-
 
 
 class AutomaticScreen: UIView {
@@ -78,22 +76,22 @@ class AutomaticScreen: UIView {
         
         
         
-        if toggleState == .play {
+        if toggleState == .pause {
             play()
-            toggleState = .pause
+            toggleState = .play
             playBtn.setImage(UIImage(named:"Pause"),for:.normal)
             
         }else if(toggleState == .start){
              playBtn.setImage(UIImage(named:"Pause"),for:.normal)
              play()
-            toggleState = .pause
+            toggleState = .play
             
             
         }
         else {
-             print("pause")
+             print("play")
             pause()
-            toggleState = .play
+            toggleState = .pause
             playBtn.setImage(UIImage(named: "Play"),for:.normal)
         }
         
@@ -186,6 +184,7 @@ class AutomaticScreen: UIView {
     
     @IBAction func refreshButton(_ sender: UIButton) {
         
+        mAutomaticViewListener.resetCounter(play: toggleState)
     }
     
     
@@ -214,10 +213,7 @@ class AutomaticScreen: UIView {
         mAutomaticViewListener = automaticViewListener
     }
     
-    
-    
-    
-    
+
     // from vc to this view
     
     
