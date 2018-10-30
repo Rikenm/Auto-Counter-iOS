@@ -16,7 +16,9 @@ class PersistantDataManager: PresitantDataManagerProtocol{
     // initiliaze realm object
      lazy var realm: Realm = try! Realm()
     
-    init(){
+    static let shared = PersistantDataManager()
+    
+    private init(){
       
     }
     
@@ -76,6 +78,29 @@ class PersistantDataManager: PresitantDataManagerProtocol{
             return false
         }
         
+        
+        return true
+    }
+    
+    
+    func persistAndUpdateCounter(counter: Counter) ->  Bool!{
+        
+        var mCounter = realm.objects(Counter.self).filter("mId = %@", counter.mId)
+        
+       
+        if let mCounterCopy = mCounter.first {
+            
+            do{
+                try! realm.write {
+                    mCounterCopy.mCount = counter.mCount
+                    mCounterCopy.mCounterState = counter.mCounterState
+                 }
+            }catch{
+                return false
+            }
+        }else{
+            return false
+        }
         
         return true
     }

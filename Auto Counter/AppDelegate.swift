@@ -28,56 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.navigationBar.isTranslucent = false
         
         
-//        navController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        
-//        navController.navigationBar.topItem?.title = "Counter"
-//
-//        navController.navigationItem.title = "Counter"
-        
-//        let firstAttr: [NSAttributedStringKey: Any] = [.font: UIFont.boldSystemFont(ofSize: 16),
-//                                                       .foregroundColor: UIColor.blue]
-//
-//        let titleLabel = UILabel()
-//
-//        let attrString = NSMutableAttributedString(string: "Navigation", attributes: firstAttr)
-//
-//        titleLabel.attributedText = attrString
-//
-//        //finding the bounds of the attributed text and resizing the label accordingly
-//        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
-//        titleLabel.frame.size = attrString.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, context: nil).size
-//
+
         
         
 //        navController.navigationItem.title = "Counter"
         navController.navigationBar.topItem?.title = "Counter"
         
-//        let titleLabel = UILabel()
-//
-//        //attributes for the first part of the string
-//        let firstAttr: [NSAttributedStringKey: Any] = [.font: UIFont.boldSystemFont(ofSize: 16),
-//                                                       .foregroundColor: UIColor.blue]
-//
-//        //attributes for the second part of the string
-//        let secondAttr: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 16),
-//                                                        .foregroundColor: UIColor.red]
-//
-//        //initializing the attributed string and appending the two parts together
-//        let attrString = NSMutableAttributedString(string: "Navigation", attributes: firstAttr)
-//        let secondAttrString = NSAttributedString(string: " Bar Title", attributes: secondAttr)
-//        attrString.append(secondAttrString)
-//
-//        //setting the attributed string as an attributed text
-//        titleLabel.attributedText = attrString
-//
-//        //finding the bounds of the attributed text and resizing the label accordingly
-//        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
-//        titleLabel.frame.size = attrString.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, context: nil).size
-//
-//        //setting the label as the title view of the navigation bar
-////        navigationItem.titleView = titleLabel
-//
-//
+
 //
 //        navController.navigationItem.titleView = titleLabel
         

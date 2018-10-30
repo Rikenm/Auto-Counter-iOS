@@ -7,42 +7,44 @@
 //
 
 import Foundation
+import RealmSwift
+import RxSwift
 
-
-struct CounterListViewModel{
+class CounterListViewModel{
    
-    var mListofCounters : [Counter]
+//    var mListofCounters =  [Counter]()
+    var mListofCounters : Results<Counter>{
+
+        didSet{
+            datatoVc.onNext(mListofCounters)
+        }
+    }
     
-//    init( listofCounter: [Counter]){
-//
-//        mListofCounters = listofCounter
-//    }
+//    var mListofCounters = [Counter]()
+    var datatoVc :BehaviorSubject<Results<Counter>>
     
-    
-    
-//
-    
+ 
     init(){
         // get this model from the realm database and convert it into this model
-        var listofCounter = [Counter]()
-        let counter = Counter()
-        counter.mTitle = "Push Up"
-        counter.mCounterState = CounterState()
+        
+        let persistantDataSingelton = PersistantDataManager.shared
+
+         mListofCounters = persistantDataSingelton.fetchListOfCounters()
+         datatoVc = BehaviorSubject<Results<Counter>>(value:mListofCounters)
         
         
-        listofCounter.append(counter)
-        
-        
-        
+//        let counter = Counter()
+//        counter.mTitle = "Love"
 //
-//        listofCounter.append(Counter(title: "Push up", count: 1, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-//        listofCounter.append(Counter(title: "Sit up", count: 10, id: 0, counterState: CounterState(speed: .fast, sound: .mute)))
-//        listofCounter.append(Counter(title: "Pull up", count: 22, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-//        listofCounter.append(Counter(title: "Push up", count: 2, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-//        listofCounter.append(Counter(title: "Curls", count: 40, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
-//        listofCounter.append(Counter(title: "Run A Mile", count: 100, id: 0, counterState: CounterState(speed: .normal, sound: .mute)))
+//        let counterState = CounterState()
 //
-        mListofCounters = listofCounter
+//        counter.mCounterState = counterState
+//
+//
+//        mListofCounters.append(counter)
+
+        
+
     }
     
     
@@ -67,9 +69,35 @@ struct CounterListViewModel{
     
     
     public func getTotalCounter()->Int {
+        
+        // error
+        
+//         let persistantDataSingelton = PersistantDataManager.shared
+        
+        
         return mListofCounters.count
         
     }
+    
+    public  func persistCounter(counter: Counter){
+        
+       let persistantDataSingelton = PersistantDataManager.shared
+        
+        persistantDataSingelton.persistCounter(counter: counter)
+        
+        fetchAllCounter()
+        
+    }
+    
+    public  func fetchAllCounter(){
+        
+        let persistantDataSingelton = PersistantDataManager.shared
+        
+        mListofCounters = persistantDataSingelton.fetchListOfCounters()
+    }
+    
+    
+    
     
    
     

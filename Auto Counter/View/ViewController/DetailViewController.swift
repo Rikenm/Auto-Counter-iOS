@@ -108,14 +108,15 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
         switch(sender.selectSegmentIndex){
         case 0:
             
-
+//              mDetailViewModel.updatePersistantContainer()
              addAutomaticScreen()
              break
             
         case 1:
-           
+            
+//              mDetailViewModel.updatePersistantContainer()
               pauseButtonClicked()
-             addManualScreen()
+              addManualScreen()
              break
             
             
@@ -254,7 +255,20 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // call the pause in the view model
-        pause()
+        pauseButtonClicked()
+        mDetailViewModel.updatePersistantContainer()
+        
+        
+    }
+    
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        
+        if parent == nil {
+            // The view is being removed from the stack, so call your function here
+            print("Hello")
+        }
     }
     
     

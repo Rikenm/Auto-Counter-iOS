@@ -14,6 +14,8 @@ protocol PresitantDataManagerProtocol{
     
     func persistCounter(counter: Counter) -> Bool!
     
+    func persistAndUpdateCounter(counter: Counter) ->  Bool!
+    
     func fetchListOfCounters()-> Results<Counter>!
     
     func fetchCounter(id:String) -> Counter!

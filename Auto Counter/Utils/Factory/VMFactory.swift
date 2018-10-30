@@ -8,5 +8,11 @@
 
 import Foundation
 
-
+class ViewModelFactory{
+    
+    init(){
+        
+    }
+    
+}
 

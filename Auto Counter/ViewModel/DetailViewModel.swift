@@ -24,12 +24,16 @@ class DetailViewModel: Countlistener{
     var mSoundManager: SoundManager
     
     init(counter: Counter){
-        mCounter = counter
+        mCounter = Counter()
+        mCounter.mCount = counter.mCount
+        mCounter.mId = counter.mId
+        mCounter.mCounterState = counter.mCounterState
         
         mCounterManager = CounterManager()
         countObservable =  BehaviorSubject<String>(value: String(counter.mCount))
         singalStateToView = BehaviorSubject<CounterState>(value: counter.mCounterState)
         mSoundManager = SoundManager()
+        
         mCounterManager.addListener(countlistener: self)
         mCounterManager.configureManager(currentValue: Int(counter.mCount))
        
@@ -89,10 +93,18 @@ class DetailViewModel: Countlistener{
     
     func onPause(){
         mCounterManager.stopCounter()
+          updatePersistantContainer()
     }
     
     
     func stateChangedSpeed(speed: SpeedState, playState: PlayState) {
+        
+        let counterState = CounterState()
+        counterState.mSound = mCounter.mCounterState.mSound
+        counterState.mSpeed = speed
+        
+        mCounter.mCounterState = counterState
+        
        mCounter.mCounterState.mSpeed = speed
         singalStateToView.onNext(mCounter.mCounterState)
         onPause()
@@ -104,11 +116,18 @@ class DetailViewModel: Countlistener{
             onPlay()
             
         }
+        updatePersistantContainer()
        
     }
     
     func stateChangedSound(mute: SoundState, playState: PlayState) {
-        mCounter.mCounterState.mSound = mute
+        let counterState = CounterState()
+        counterState.mSound = mute
+        counterState.mSpeed = mCounter.mCounterState.mSpeed
+
+        mCounter.mCounterState = counterState
+        
+        
          singalStateToView.onNext(mCounter.mCounterState)
         onPause()
           mCounterManager.configureManager(currentValue: Int(mCounter.mCount) )
@@ -117,6 +136,7 @@ class DetailViewModel: Countlistener{
             onPlay()
             
         }
+        updatePersistantContainer()
         
     }
 
@@ -130,6 +150,19 @@ class DetailViewModel: Countlistener{
             onPlay()
             
         }
+        
+        
+        updatePersistantContainer()
+        
+    }
+    
+    
+    func updatePersistantContainer(){
+        
+        let persistantDataSingleton = PersistantDataManager.shared
+        
+       _ =  persistantDataSingleton.persistAndUpdateCounter(counter: mCounter)
+        
         
         
     }

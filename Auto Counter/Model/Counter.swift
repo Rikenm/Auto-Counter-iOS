@@ -47,8 +47,7 @@ class Counter: Object{
     @objc dynamic var mTitle: String = ""
      @objc dynamic var mCount: Int = 0
      @objc dynamic var mId = UUID().uuidString
-     @objc dynamic var mCounterState: CounterState = CounterState()
-    
+     @objc dynamic var mCounterState: CounterState!
     override static func primaryKey() -> String? {
         return "mId"
     }

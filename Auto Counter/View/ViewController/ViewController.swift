@@ -8,16 +8,71 @@
 
 import UIKit
 
+
+
+
 class ViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var myTableView: UITableView!
     
     weak var coordinator: RootCoordinator?
     
+    
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var dimView: UIView!
     var counterListViewModel: CounterListViewModel = CounterListViewModel()
     
     var listofColors : [UIImage] = [#imageLiteral(resourceName: "b circle"),#imageLiteral(resourceName: "blue circle"),#imageLiteral(resourceName: "orange circle"),#imageLiteral(resourceName: "pink circle"),#imageLiteral(resourceName: "yellow circle")]
     
+    
+    @IBOutlet weak var editTextAdd: UITextField!
+    
+    
+    @IBAction func enterButton(_ sender: UIButton) {
+        if(editTextAdd.text != ""){
+            
+            let counter = Counter()
+            if let title = editTextAdd.text{
+                
+                counter.mTitle = title
+                counter.mCounterState = CounterState()
+                counterListViewModel.persistCounter(counter: counter)
+                
+                myTableView.reloadData()
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.addItemView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+                    self.addItemView.alpha = 0
+                    self.dimView.alpha = 0
+                    self.editTextAdd.text = ""
+                    
+                }) { (success: Bool) in
+                    
+                    self.addItemView.removeFromSuperview()
+                    
+                }
+                
+                
+            }
+            
+           
+            
+        }else{
+            
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.08
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.speed = 1.0
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: addItemView.center.x+10, y: addItemView.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: addItemView.center.x-10 , y: addItemView.center.y))
+            addItemView.layer.add(animation, forKey: "position")
+            
+        }
+        
+    }
+    @IBOutlet var addItemView: UIView!
     
 
     override func viewDidLoad() {
@@ -28,9 +83,22 @@ class ViewController: UIViewController, Storyboarded {
 //        myTableView.allowsSelection = false;
         setupNavbar()
         
+//        counterListViewModel.datatoVc.subscribe(onNext:{
+//            data in
+//            
+//            self.myTableView.reloadData()
+//            
+//        })
+        
 
         
     }
+    
+    
+    
+    
+    
+    
     
     public func setupTableView(){
         
@@ -50,6 +118,7 @@ class ViewController: UIViewController, Storyboarded {
     
     public func setupNavbar(){
         
+        navigationController?.navigationBar.tintColor = UIColor.white
         
        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -79,9 +148,47 @@ class ViewController: UIViewController, Storyboarded {
     }
     
     @objc func addTapped(){
-        //  when plus button is clicked 
+        
+        
+
+//
+       
+        
+        addItemView.layer.cornerRadius = 10
+        topView.layer.cornerRadius = 10
+        
+        view.addSubview(addItemView)
+        
+        //animation
+        addItemView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        addItemView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) {
+             self.dimView.alpha = 0.6
+             self.addItemView.alpha = 1
+            self.addItemView.transform = CGAffineTransform.identity
+        }
+        
+        
+        addItemView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            addItemView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            addItemView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: -UIScreen.main.bounds.height * 0.1),
+            addItemView.widthAnchor.constraint(equalToConstant: 304),
+            addItemView.heightAnchor.constraint(equalToConstant: 156)
+            ])
+        
+        
+
+        
+        
         
     }
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75;
@@ -135,6 +242,37 @@ class ViewController: UIViewController, Storyboarded {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
+    
+    
+    
+    @IBAction func onDimissCardView(_ sender: Any) {
+        
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            self.addItemView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.addItemView.alpha = 0
+            self.dimView.alpha = 0
+            self.editTextAdd.text = ""
+            
+        }) { (success: Bool) in
+            
+            self.addItemView.removeFromSuperview()
+            
+        }
+        
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.myTableView.reloadData()
+    }
+    
+    
+    
+    
 
 
 }
@@ -144,7 +282,7 @@ extension ViewController: UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        //error
         return (counterListViewModel.getTotalCounter())
         
     }

@@ -26,6 +26,9 @@ protocol ManualViewListener {
     }
     
     
+    
+    
+    
     @IBOutlet weak var muteButton: UIButton!
     
     var mManualViewListener:ManualViewListener!
@@ -40,6 +43,10 @@ protocol ManualViewListener {
         super.init(coder: aDecoder)
 
     }
+    
+    
+    
+    
     
     override init(frame: CGRect) {   // 3 - programmatic initializer
         super.init(frame: CGRect.zero)  // 4.
@@ -58,10 +65,31 @@ protocol ManualViewListener {
         if(mManualViewListener != nil){
             print("insdie the listener counting")
             mManualViewListener.addCountManual()
+            
+            
+            shake()
+            
+            
         }else{
             print("listener is nil")
         }
         
+    }
+    
+    
+    
+    func shake(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 0
+        animation.autoreverses = true
+        animation.speed = 2.0
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: counterLabel.center.x, y: counterLabel.center.y+10))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: counterLabel.center.x , y: counterLabel.center.y-10))
+        counterLabel.layer.add(animation, forKey: "position")
+        
+        
+       
     }
     
    func addListener(manualViewListener:ManualViewListener){
