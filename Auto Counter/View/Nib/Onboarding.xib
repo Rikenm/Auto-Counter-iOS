@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Onboaring" customModule="Auto_Counter" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Onboarding" customModule="Auto_Counter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-1" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-K0-UrO">
+                    <rect key="frame" x="89" y="240" width="236" height="156"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="156" id="7CL-3X-Gel"/>
+                        <constraint firstAttribute="width" constant="236" id="KLH-Za-4cJ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOE-ce-vD0">
+                    <rect key="frame" x="24" y="453" width="390" height="31.666666666666686"/>
+                    <attributedString key="attributedText">
+                        <fragment>
+                            <string key="content">Simply Create Counters
+</string>
+                            <attributes>
+                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="27" name="Helvetica"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9H-b1-w1r">
+                    <rect key="frame" x="24" y="492.66666666666674" width="366" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="335" id="hMi-MC-GHd"/>
+                        <constraint firstAttribute="height" constant="58" id="wGY-M0-rMG"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="Start Counting using manual or automatic counts ">
+                            <attributes>
+                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="18" name="SFProText-Bold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hMi-MC-GHd"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlm-M1-PBC">
+                    <rect key="frame" x="337" y="629" width="54" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="Ocb-Z2-TC0"/>
+                        <constraint firstAttribute="height" constant="59" id="igb-DU-qiV"/>
+                    </constraints>
+                    <state key="normal" image="skip button "/>
+                    <connections>
+                        <action selector="skipBtnAction:" destination="-1" eventType="touchUpInside" id="slg-6G-qPj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.14901960780000001" green="0.74509803919999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="NnU-K0-UrO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-60" id="0Lb-Hz-6cc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rOE-ce-vD0" secondAttribute="trailing" id="0dQ-LK-DfK"/>
+                <constraint firstItem="rOE-ce-vD0" firstAttribute="leading" secondItem="S9H-b1-w1r" secondAttribute="leading" id="8Gc-3W-2NT"/>
+                <constraint firstItem="S9H-b1-w1r" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-24" id="G17-dC-eeG"/>
+                <constraint firstItem="rOE-ce-vD0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="NPi-Sc-R0G"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vlm-M1-PBC" secondAttribute="bottom" constant="48" id="UFO-fr-RpA"/>
+                <constraint firstItem="NnU-K0-UrO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VHj-Z4-VJ0"/>
+                <constraint firstItem="rOE-ce-vD0" firstAttribute="top" secondItem="NnU-K0-UrO" secondAttribute="bottom" constant="57" id="XTV-40-bit"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vlm-M1-PBC" secondAttribute="trailing" constant="23" id="aRN-LR-bOz"/>
+                <constraint firstItem="S9H-b1-w1r" firstAttribute="top" secondItem="rOE-ce-vD0" secondAttribute="bottom" constant="8" id="hYV-gE-zzn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bodyLabel" destination="S9H-b1-w1r" id="eE2-GF-KUp"/>
+                <outlet property="imageView" destination="NnU-K0-UrO" id="gML-6K-kow"/>
+                <outlet property="mainLabel" destination="rOE-ce-vD0" id="KP2-Yq-soP"/>
+                <outlet property="skipBtn" destination="vlm-M1-PBC" id="X7R-da-L5M"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="onboarding-1" width="236" height="156"/>
+        <image name="skip button " width="54" height="54"/>
+    </resources>
+</document>

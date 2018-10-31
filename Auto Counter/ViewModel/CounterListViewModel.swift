@@ -96,6 +96,15 @@ class CounterListViewModel{
         mListofCounters = persistantDataSingelton.fetchListOfCounters()
     }
     
+    public func deleteCounter(id: String){
+          let persistantDataSingelton = PersistantDataManager.shared
+        
+          persistantDataSingelton.deleteCounter(id: id)
+         
+        
+        
+    }
+    
     
     
     

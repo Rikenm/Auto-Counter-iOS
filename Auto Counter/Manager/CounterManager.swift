@@ -30,6 +30,8 @@ class CounterManager{
     
     var timer: Timer!
     
+    var rate:Int!
+    
     init(){
         
         
@@ -40,6 +42,12 @@ class CounterManager{
         self.mCurrentValue = currentValue;
     
     }
+    
+    func configureSpeedOfManager(rate: Int){
+        
+        self.rate = rate
+    }
+    
     
     func addListener(countlistener:Countlistener){
      listeners=countlistener
@@ -57,7 +65,7 @@ class CounterManager{
             
             
         case .manaul:
-            add()
+            addManaual()
             
            
         }
@@ -87,6 +95,20 @@ class CounterManager{
         }
         
         
+    }
+    
+    
+    func addManaual(){
+        
+        if  self.mCurrentValue != nil{
+            self.mCurrentValue!  += rate
+            
+            print("from the countermanager\(mCurrentValue!)")
+            
+        }
+        if(self.listeners != nil){
+            self.listeners.passValue(value:self.mCurrentValue!)
+        }
     }
     
     

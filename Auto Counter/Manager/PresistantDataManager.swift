@@ -107,6 +107,44 @@ class PersistantDataManager: PresitantDataManagerProtocol{
     
     
     
+
+    
+    
+    
+    func isFirstVisit()-> Bool!{
+        
+        let firstVisit = realm.objects(FirstVisit.self)
+        
+        if let mFirstVisit = firstVisit.first{
+            
+            
+            return false
+            
+        }else{
+            do{
+                try realm.write {
+                  
+                    let persistFirstVisit = FirstVisit()
+                    persistFirstVisit.isFirstVisit = false
+                    
+                    realm.add(persistFirstVisit)
+                    
+                    
+            
+                }
+            }catch{
+                return false
+            }
+            
+            
+            return true
+        }
+        
+        
+    }
+    
+    
+    
     
     
     

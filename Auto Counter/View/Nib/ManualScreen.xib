@@ -87,12 +87,23 @@
                         <action selector="addButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="WJH-44-KVm"/>
                     </connections>
                 </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIq-Cd-OG1">
+                    <rect key="frame" x="364" y="356" width="50" height="162"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Hz0-5N-kPZ"/>
+                        <constraint firstAttribute="height" constant="162" id="nxH-lN-u6H"/>
+                    </constraints>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="TIq-Cd-OG1" firstAttribute="leading" secondItem="x5H-ly-4Lt" secondAttribute="trailing" constant="-50" id="4NX-2r-WBp"/>
                 <constraint firstItem="x5H-ly-4Lt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9Ww-zP-9J2"/>
                 <constraint firstItem="x5H-ly-4Lt" firstAttribute="top" secondItem="Wjq-Po-Yh3" secondAttribute="bottom" constant="8" id="Lpm-jW-Y5U"/>
                 <constraint firstItem="x5H-ly-4Lt" firstAttribute="height" secondItem="Wjq-Po-Yh3" secondAttribute="height" multiplier="5:1" id="UIy-wW-P94"/>
+                <constraint firstItem="TIq-Cd-OG1" firstAttribute="centerY" secondItem="x5H-ly-4Lt" secondAttribute="centerY" constant="-4" id="VYC-CH-a4n"/>
                 <constraint firstItem="x5H-ly-4Lt" firstAttribute="top" secondItem="Tf2-8l-swg" secondAttribute="bottom" constant="16" id="WlB-Fv-nC1"/>
                 <constraint firstItem="x5H-ly-4Lt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Xln-BJ-Ouy"/>
                 <constraint firstItem="Wjq-Po-Yh3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aFM-uf-3Xu"/>
@@ -105,6 +116,7 @@
             <connections>
                 <outlet property="counterLabel" destination="nxK-q0-1mJ" id="lZv-lw-yQC"/>
                 <outlet property="muteButton" destination="O4m-lO-8jH" id="2be-w2-XUU"/>
+                <outlet property="pickerView" destination="TIq-Cd-OG1" id="Qds-qy-6qX"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="132.88043478260872"/>
         </view>

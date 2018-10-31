@@ -11,9 +11,9 @@ import RealmSwift
 
 @objc enum SpeedState: Int{
     
-    case normal = 5
-    case fast = 1
-    case slow = 10
+    case normal = 4
+    case fast = 2
+    case slow = 8
     
 }
 
@@ -26,9 +26,14 @@ import RealmSwift
     case unmute = 1
 }
 
+
+
+
 class CounterState: Object{
     @objc dynamic  var mSpeed: SpeedState = .normal
-     @objc dynamic var mSound: SoundState = .mute
+     @objc dynamic var mSound: SoundState = .unmute
+    // at this rate int over here
+    @objc dynamic var  rateState: Int =  1
     
 //    init(speed:SpeedState,sound:SoundState ){
 //        mSpeed = speed

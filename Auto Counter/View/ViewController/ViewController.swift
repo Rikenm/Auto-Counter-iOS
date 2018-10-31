@@ -17,13 +17,14 @@ class ViewController: UIViewController, Storyboarded {
     
     weak var coordinator: RootCoordinator?
     
+  
     
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var dimView: UIView!
     var counterListViewModel: CounterListViewModel = CounterListViewModel()
     
-    var listofColors : [UIImage] = [#imageLiteral(resourceName: "b circle"),#imageLiteral(resourceName: "blue circle"),#imageLiteral(resourceName: "orange circle"),#imageLiteral(resourceName: "pink circle"),#imageLiteral(resourceName: "yellow circle")]
+//    var listofColors : [UIImage] = [#imageLiteral(resourceName: "b circle"),#imageLiteral(resourceName: "blue circle"),#imageLiteral(resourceName: "orange circle"),#imageLiteral(resourceName: "pink circle"),#imageLiteral(resourceName: "yellow circle")]
     
     
     @IBOutlet weak var editTextAdd: UITextField!
@@ -191,7 +192,7 @@ class ViewController: UIViewController, Storyboarded {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75;
+        return 150;
     }
     
     
@@ -301,8 +302,29 @@ extension ViewController: UITableViewDataSource{
         
         cell.mCount.text = String(counterListViewModel.getCount()[indexPath.row])
         
-        cell.imageCircle.image = listofColors[(indexPath.row%5)]
         
+        cell.rateLabel.text =  String(counterListViewModel.mListofCounters[indexPath.row].mCounterState.rateState)
+        
+        
+        if( counterListViewModel.mListofCounters[indexPath.row].mCounterState.mSound == .mute){
+             cell.muteImage.setImage(UIImage(named: "mute-white"), for: .normal)
+        }else{
+             cell.muteImage.setImage(UIImage(named: "sound-white"), for: .normal)
+        }
+        
+        
+        
+        if(counterListViewModel.mListofCounters[indexPath.row].mCounterState.mSpeed == .fast){
+            cell.speedBtn.setImage(UIImage(named: "lighting-white"), for: .normal)
+        }else if (counterListViewModel.mListofCounters[indexPath.row].mCounterState.mSpeed == .slow) {
+            cell.speedBtn.setImage(UIImage(named: "tortoise-white"), for: .normal)
+        }else if (counterListViewModel.mListofCounters[indexPath.row].mCounterState.mSpeed == .normal) {
+            
+           cell.speedBtn.setImage(UIImage(named: "blank-white"), for: .normal)
+        }
+       
+        
+
         
         
         return cell
@@ -328,6 +350,19 @@ extension ViewController: UITableViewDelegate{
         
         coordinator?.listToDetail(counter: counter)
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if(editingStyle == .delete){
+            
+            let id = counterListViewModel.mListofCounters[indexPath.row].mId
+            
+            counterListViewModel.deleteCounter(id: id)
+            myTableView.reloadData()
+
+        }
     }
     
     

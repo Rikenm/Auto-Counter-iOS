@@ -21,10 +21,31 @@ class RootCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ViewController.instantiate()
-        vc.coordinator = self
+
+        let persistantData = PersistantDataManager.shared
         
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.viewControllers.removeAll() // remove the onboarding vc 
+        
+        if(persistantData.isFirstVisit()){
+            
+            let onBoardingVc = OnBoarding.instantiate()
+            onBoardingVc.coordinator = self
+            
+            navigationController.pushViewController(onBoardingVc, animated: false)
+            
+        }else{
+            
+            
+            
+            // check if this is the first time  if then not then
+            let vc = ViewController.instantiate()
+            vc.coordinator = self
+            navigationController.pushViewController(vc, animated: false)
+            
+            
+        }
+        
+ 
         
     }
     

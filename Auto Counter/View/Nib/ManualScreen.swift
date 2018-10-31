@@ -12,11 +12,25 @@ protocol ManualViewListener {
     func addCountManual()
     func stateChangedSound(mute:SoundState, play:PlayState)
     func resetCounter(play:PlayState)
+    func rateChanged(rate:Int)
 }
 
 @IBDesignable
  class ManualScreen: UIView {
     
+    
+    
+    @IBOutlet weak var pickerView: UIPickerView!{
+        
+        didSet{
+                    pickerView.delegate = self
+                    pickerView.dataSource = self
+            
+        }
+        
+    }
+    
+    var pickerData: [String] = ["-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","+1","+2","+3","+4","+5","+6","+7","+8","+9","+10"]
     
     
     var muteState: SoundState!{
@@ -41,6 +55,10 @@ protocol ManualViewListener {
 
     required init?(coder aDecoder: NSCoder) {   // 2 - storyboard initializer
         super.init(coder: aDecoder)
+        
+        
+        
+        print("initing manual screen from the code")
 
     }
     
@@ -51,7 +69,13 @@ protocol ManualViewListener {
     override init(frame: CGRect) {   // 3 - programmatic initializer
         super.init(frame: CGRect.zero)  // 4.
         
-        print("initing manual screen")
+        
+        
+//        self.pickerView.delegate = self
+//        self.pickerView.dataSource = self
+        
+        
+        print("initing manual screen from the code")
 //       xibSetup() // 6.
         
     }
@@ -149,6 +173,19 @@ protocol ManualViewListener {
     }
     
     
+    func changePickerViewValue(value: Int){
+       
+        let data: String = (value <= 0) ? String(value)  : "+" + String(value)
+        
+      let index = pickerData.firstIndex(of: data)
+        
+    
+     
+        
+        pickerView.selectRow( index ?? 1, inComponent: 0, animated: false)
+    }
+    
+    
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -162,4 +199,54 @@ protocol ManualViewListener {
     
     
 
+}
+
+
+
+
+extension ManualScreen: UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return  pickerData.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        
+        var string = pickerData[row]
+        let myAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        let myAttrString = NSAttributedString(string: string, attributes: myAttribute)
+        
+        
+        return myAttrString
+     
+        
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+     
+        
+        
+        
+        
+        mManualViewListener.rateChanged(rate: Int(pickerData[row]) ?? 1)
+    }
+    
+   
+    
+    
+    
+    
+    
 }

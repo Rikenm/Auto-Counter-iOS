@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController, ManualViewListener, AutomaticViewListener,Storyboarded {
+   
   
 
     @IBOutlet weak var segmentedControl: SegmentedControl!
@@ -50,13 +51,16 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
             
 //            self.mAutomaticScreen.
             // change mute/unmute icon in the both the views
-            self.mAutomaticScreen.changeSoundIcon(soundState: mCounterState.mSound)
+            self.mAutomaticScreen?.changeSoundIcon(soundState: mCounterState.mSound)
             self.mManualScreen?.changeSoundIcon(soundState: mCounterState.mSound)
+           
+            self.mManualScreen?.changePickerViewValue(value: mCounterState.rateState)
+            
             
             
             
             //change speedstate icon
-            self.mAutomaticScreen.changeSpeedIcon(speedState: mCounterState.mSpeed)
+            self.mAutomaticScreen?.changeSpeedIcon(speedState: mCounterState.mSpeed)
             
             
             
@@ -244,6 +248,12 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
     func resetCounter(play: PlayState) {
         mDetailViewModel.resetCounter(playState: play)
     }
+    
+    
+    func rateChanged(rate: Int) {
+        mDetailViewModel.rateChanged(rate: rate)
+    }
+    
     
     
     

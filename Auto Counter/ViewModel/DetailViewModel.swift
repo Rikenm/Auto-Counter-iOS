@@ -34,7 +34,11 @@ class DetailViewModel: Countlistener{
         singalStateToView = BehaviorSubject<CounterState>(value: counter.mCounterState)
         mSoundManager = SoundManager()
         
+        
         mCounterManager.addListener(countlistener: self)
+        
+        
+        mCounterManager.configureSpeedOfManager(rate: mCounter.mCounterState.rateState)
         mCounterManager.configureManager(currentValue: Int(counter.mCount))
        
 
@@ -102,6 +106,7 @@ class DetailViewModel: Countlistener{
         let counterState = CounterState()
         counterState.mSound = mCounter.mCounterState.mSound
         counterState.mSpeed = speed
+         counterState.rateState = mCounter.mCounterState.rateState
         
         mCounter.mCounterState = counterState
         
@@ -124,6 +129,7 @@ class DetailViewModel: Countlistener{
         let counterState = CounterState()
         counterState.mSound = mute
         counterState.mSpeed = mCounter.mCounterState.mSpeed
+         counterState.rateState = mCounter.mCounterState.rateState
 
         mCounter.mCounterState = counterState
         
@@ -154,6 +160,28 @@ class DetailViewModel: Countlistener{
         
         updatePersistantContainer()
         
+    }
+    
+    
+    
+    func rateChanged(rate: Int){
+           mCounterManager.configureSpeedOfManager(rate: rate)
+        
+        
+        let counterState = CounterState()
+        counterState.mSound = mCounter.mCounterState.mSound
+        counterState.mSpeed = mCounter.mCounterState.mSpeed
+        counterState.rateState = rate
+        
+        mCounter.mCounterState = counterState
+        
+        singalStateToView.onNext(mCounter.mCounterState)
+        
+        updatePersistantContainer()
+        
+        
+        
+
     }
     
     

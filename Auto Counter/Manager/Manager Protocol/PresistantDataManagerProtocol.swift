@@ -24,4 +24,6 @@ protocol PresitantDataManagerProtocol{
     
     func deleteCounter(id:String) -> Bool!
     
+    func isFirstVisit()-> Bool!
+    
 }
