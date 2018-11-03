@@ -83,6 +83,16 @@ class PersistantDataManager: PresitantDataManagerProtocol{
     }
     
     
+    
+    func deleteAll(){
+        
+        try! realm.write {
+            realm.deleteAll()
+        }
+        
+    }
+    
+    
     func persistAndUpdateCounter(counter: Counter) ->  Bool!{
         
         var mCounter = realm.objects(Counter.self).filter("mId = %@", counter.mId)

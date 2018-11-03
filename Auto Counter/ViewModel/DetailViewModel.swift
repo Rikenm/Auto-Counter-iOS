@@ -96,8 +96,9 @@ class DetailViewModel: Countlistener{
      **/
     
     func onPause(){
-        mCounterManager.stopCounter()
+         mCounterManager.stopCounter()
           updatePersistantContainer()
+        
     }
     
     
@@ -113,7 +114,7 @@ class DetailViewModel: Countlistener{
        mCounter.mCounterState.mSpeed = speed
         singalStateToView.onNext(mCounter.mCounterState)
         onPause()
-          mCounterManager.configureManager(currentValue: Int(mCounter.mCount))
+        mCounterManager.configureManager(currentValue: Int(mCounter.mCount))
         
         
         

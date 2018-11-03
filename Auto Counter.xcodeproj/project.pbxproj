@@ -14,6 +14,7 @@
 		EA28083921809E8C00190E4E /* AutomaticScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA28083821809E8C00190E4E /* AutomaticScreen.swift */; };
 		EA28083C21809F1300190E4E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA28083B21809F1300190E4E /* UIViewExtension.swift */; };
 		EA30F12821835AF900D44F04 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F12721835AF900D44F04 /* Pulsing.swift */; };
+		EA3844FC218CD9DA00909086 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3844FB218CD9DA00909086 /* SettingViewController.swift */; };
 		EA6617E72188C6960017F143 /* FirstVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6617E62188C6960017F143 /* FirstVisit.swift */; };
 		EA708A18218265F60002FF4D /* SegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA708A17218265F60002FF4D /* SegmentedControl.xib */; };
 		EA7F7B43217FCBF8009B916B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F7B42217FCBF8009B916B /* DetailViewModel.swift */; };
@@ -49,6 +50,7 @@
 		EA28083821809E8C00190E4E /* AutomaticScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticScreen.swift; sourceTree = "<group>"; };
 		EA28083B21809F1300190E4E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		EA30F12721835AF900D44F04 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
+		EA3844FB218CD9DA00909086 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EA6617E62188C6960017F143 /* FirstVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVisit.swift; sourceTree = "<group>"; };
 		EA708A17218265F60002FF4D /* SegmentedControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedControl.xib; sourceTree = "<group>"; };
 		EA7F7B42217FCBF8009B916B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				EAF77BE8217BB55A0013F9B6 /* ViewController.swift */,
 				EA813FFD217F9F2600628CCC /* DetailViewController.swift */,
 				EA808BDF21881619007E1CA3 /* OnboardingViewController.swift */,
+				EA3844FB218CD9DA00909086 /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				EA28083921809E8C00190E4E /* AutomaticScreen.swift in Sources */,
 				EA808BE4218819EF007E1CA3 /* Onboarding.swift in Sources */,
 				EAF77BE7217BB55A0013F9B6 /* AppDelegate.swift in Sources */,
+				EA3844FC218CD9DA00909086 /* SettingViewController.swift in Sources */,
 				EA7F7B47217FDDDD009B916B /* CustomSegmentedControl.swift in Sources */,
 				EA045BAB217CFE33005FF6A6 /* CounterListTableViewCell.swift in Sources */,
 				EA813FFE217F9F2600628CCC /* DetailViewController.swift in Sources */,

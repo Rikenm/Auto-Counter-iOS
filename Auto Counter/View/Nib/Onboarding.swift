@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol OnBoardingListener{
+    
+    func skippedClicked()
+    
+    
+    
+}
+
+
 class Onboarding: UIView {
 
     /*
@@ -17,6 +26,8 @@ class Onboarding: UIView {
         // Drawing code
     }
     */
+    
+    var mOnBoardingListener: OnBoardingListener!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -30,7 +41,7 @@ class Onboarding: UIView {
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
         
-       
+       mOnBoardingListener.skippedClicked()
         
     }
     
@@ -45,6 +56,12 @@ class Onboarding: UIView {
         
         print("initing automatic  screen")
        
+        
+    }
+    
+    func addOnBoardingListener(onBoardingListner:OnBoardingListener){
+        
+        mOnBoardingListener = onBoardingListner
         
     }
     

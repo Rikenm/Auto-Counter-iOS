@@ -9,7 +9,8 @@
 import UIKit
 
 
-class OnBoarding: UIViewController, Storyboarded{
+class OnBoarding: UIViewController, Storyboarded, OnBoardingListener{
+    
     
     
     var coordinator: Coordinator!
@@ -36,6 +37,8 @@ class OnBoarding: UIViewController, Storyboarded{
         
         onBoardingScreens = createOnboardingScreens()
         
+        
+        
         setupScrollView(listofScreens: onBoardingScreens)
         
         
@@ -53,6 +56,8 @@ class OnBoarding: UIViewController, Storyboarded{
         
         let screen1: Onboarding = UIView.fromNib()
         
+        screen1.addOnBoardingListener(onBoardingListner: self)
+        
         screen1.imageView.image = UIImage(named: "onboarding-1")
         
         screen1.mainLabel.text = "Simply Create Counters"
@@ -68,6 +73,7 @@ class OnBoarding: UIViewController, Storyboarded{
         let screen2: Onboarding = UIView.fromNib()
         
         screen2.imageView.image = UIImage(named: "onboarding-2")
+        screen2.addOnBoardingListener(onBoardingListner: self)
         
         screen2.mainLabel.text = "Automatic Counter"
         
@@ -83,6 +89,8 @@ class OnBoarding: UIViewController, Storyboarded{
         let screen3: Onboarding = UIView.fromNib()
         
         screen3.imageView.image = UIImage(named: "onboarding-3")
+        
+        screen3.addOnBoardingListener(onBoardingListner: self)
         
         screen3.mainLabel.text = "Count with Sound"
         
@@ -103,6 +111,12 @@ class OnBoarding: UIViewController, Storyboarded{
         
         
     }
+    
+    
+    func skippedClicked() {
+        coordinator.start()
+    }
+    
     
     
     

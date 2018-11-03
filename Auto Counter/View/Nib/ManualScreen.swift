@@ -30,6 +30,8 @@ protocol ManualViewListener {
         
     }
     
+    
+    
     var pickerData: [String] = ["-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","+1","+2","+3","+4","+5","+6","+7","+8","+9","+10"]
     
     
@@ -69,11 +71,7 @@ protocol ManualViewListener {
     override init(frame: CGRect) {   // 3 - programmatic initializer
         super.init(frame: CGRect.zero)  // 4.
         
-        
-        
-//        self.pickerView.delegate = self
-//        self.pickerView.dataSource = self
-        
+
         
         print("initing manual screen from the code")
 //       xibSetup() // 6.
@@ -99,6 +97,12 @@ protocol ManualViewListener {
         }
         
     }
+    
+    
+//    override func awakeFromNib() {
+//        pickerView.delegate = self
+//        pickerView.dataSource = self
+//    }
     
     
     

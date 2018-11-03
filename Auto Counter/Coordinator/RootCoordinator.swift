@@ -35,12 +35,14 @@ class RootCoordinator: Coordinator {
             
         }else{
             
-            
+            navigationController.navigationBar.isHidden = false // unhide the navigation after the onboard hid it 
             
             // check if this is the first time  if then not then
             let vc = ViewController.instantiate()
             vc.coordinator = self
             navigationController.pushViewController(vc, animated: false)
+            
+            
             
             
         }
@@ -56,6 +58,25 @@ class RootCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
         
     
+    }
+    
+    
+    func settingsMenu(){
+        
+       
+        let vc = SettingViewController.instantiate()
+      
+        
+        let navController = UINavigationController(rootViewController: vc)
+        
+       
+        
+         navController.navigationBar.isTranslucent = false
+        
+        
+         vc.coordinator = self
+        navigationController.present(navController, animated: true, completion: nil)
+        
     }
     
     

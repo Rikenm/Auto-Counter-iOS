@@ -123,12 +123,32 @@ class ViewController: UIViewController, Storyboarded {
         
        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        //
+        
+        
+        
+    
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings"), style: .plain, target: self, action: #selector(settingTapped))
+            
+            
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        
+        
+        
     
             let titleLabel = UILabel()
     
             //attributes for the first part of the string
             let firstAttr: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 20),
                                                            .foregroundColor: UIColor.white]
+        
+        
+        
+        
+        
+        
     
 
             let attrString = NSMutableAttributedString(string: "Counter", attributes: firstAttr)
@@ -161,7 +181,7 @@ class ViewController: UIViewController, Storyboarded {
         view.addSubview(addItemView)
         
         //animation
-        addItemView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+//        addItemView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         addItemView.alpha = 0
         
         UIView.animate(withDuration: 0.4) {
@@ -185,6 +205,12 @@ class ViewController: UIViewController, Storyboarded {
         
         
         
+    }
+    
+    
+    @objc func settingTapped(){
+    
+            coordinator?.settingsMenu()
     }
     
     
@@ -302,8 +328,12 @@ extension ViewController: UITableViewDataSource{
         
         cell.mCount.text = String(counterListViewModel.getCount()[indexPath.row])
         
+        let rate = counterListViewModel.mListofCounters[indexPath.row].mCounterState.rateState
         
-        cell.rateLabel.text =  String(counterListViewModel.mListofCounters[indexPath.row].mCounterState.rateState)
+        let data: String = rate < 0 ?"-"+String(abs(rate)): "+"+String(rate)
+        
+        
+        cell.rateLabel.text =  data
         
         
         if( counterListViewModel.mListofCounters[indexPath.row].mCounterState.mSound == .mute){

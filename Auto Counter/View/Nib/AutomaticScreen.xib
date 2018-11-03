@@ -138,6 +138,7 @@
                 <outlet property="counterLabel" destination="0hC-gC-5lc" id="mwI-2e-95f"/>
                 <outlet property="lightingButton" destination="gnc-zq-Pd3" id="tF7-Rv-SFp"/>
                 <outlet property="normalImage" destination="eeh-EJ-2X8" id="Ql5-af-DHM"/>
+                <outlet property="playBtn" destination="uff-3C-GXd" id="BwB-AN-E0N"/>
                 <outlet property="soundButton" destination="g2q-kv-Jt8" id="u78-Px-yTS"/>
                 <outlet property="tortoiseButton" destination="Fzz-2c-uc3" id="dEh-MJ-xyv"/>
             </connections>

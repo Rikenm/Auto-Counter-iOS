@@ -29,6 +29,7 @@ enum PlayState{
 class AutomaticScreen: UIView {
 
 
+    @IBOutlet weak var playBtn: UIButton!
     
     @IBOutlet weak var tortoiseButton: UIButton!
     
@@ -96,6 +97,15 @@ class AutomaticScreen: UIView {
         }
         
         
+        
+    }
+    
+    
+    
+    func pauseFromVC(){
+        
+        toggleState = .pause
+        playBtn.setImage(UIImage(named: "Play"),for:.normal)
         
     }
     

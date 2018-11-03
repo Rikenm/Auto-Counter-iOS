@@ -27,6 +27,7 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
     var mCounter: Counter!{
         didSet{
             mDetailViewModel = DetailViewModel(counter: mCounter)
+             setupNavbar()
         }
     }
     
@@ -35,7 +36,7 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
         
 
         
-        setupNavbar()
+       
         setupViews()
         addAutomaticScreen()
         
@@ -46,9 +47,7 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
         
         mDetailViewModel?.singalStateToView.subscribe(onNext:{
             mCounterState in
-            print(" counter state")
-            
-            
+           
 //            self.mAutomaticScreen.
             // change mute/unmute icon in the both the views
             self.mAutomaticScreen?.changeSoundIcon(soundState: mCounterState.mSound)
@@ -120,6 +119,11 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
             
 //              mDetailViewModel.updatePersistantContainer()
               pauseButtonClicked()
+             
+              // not send this information to Viewmodel but instead VC will contact view directly. ANti pattern but fine small project.
+              mAutomaticScreen.pauseFromVC()
+              
+              
               addManualScreen()
              break
             
@@ -209,8 +213,10 @@ class DetailViewController: UIViewController, ManualViewListener, AutomaticViewL
         let firstAttr: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 20),
                                                         .foregroundColor: UIColor.white]
         
+        //mDetailViewModel?.mCounter.mTitle
         
-        let attrString = NSMutableAttributedString(string: mDetailViewModel?.mCounter.mTitle ?? "Item", attributes: firstAttr)
+       
+        let attrString = NSMutableAttributedString(string: mCounter.mTitle ?? "Item", attributes: firstAttr)
         
         titleLabel.attributedText = attrString
         
