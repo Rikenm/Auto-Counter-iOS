@@ -26,7 +26,7 @@ class SettingViewController: UITableViewController, Storyboarded, MFMailComposeV
 //        self.view.backgroundColor = UIColor.red
         self.view.isOpaque = true
         
-//        self.view.backgroundColor = UIColor.init(displayP3Red: 149/255, green: 190/255, blue: 242/255, alpha: 1)
+        self.view.backgroundColor = UIColor.init(displayP3Red: 65/255, green: 64/255, blue: 63/255, alpha: 1)
         
         
         
