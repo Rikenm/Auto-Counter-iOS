@@ -118,22 +118,51 @@ class SettingViewController: UITableViewController, Storyboarded, MFMailComposeV
     func resetAllCounters(){
         
         let persistantData = PersistantDataManager.shared
+        //
         
+        let warning = UIAlertController(title: "Reset All Counters", message: "All the counters available would be reset permanently!", preferredStyle: .alert)
         
-        
-        var result = persistantData.fetchListOfCounters()
-        
-        result?.forEach({ (counter) in
+        let ok = UIAlertAction(title: "OK", style: .default, handler: {
             
-           let counterCopy = Counter()
-            counterCopy.mCount = 0
-            counterCopy.mId = counter.mId
-             counterCopy.mTitle = counter.mTitle
-            counterCopy.mCounterState =   CounterState()
-           persistantData.persistAndUpdateCounter(counter: counterCopy)
+            action in
             
+            switch action.style{
+            case .default:
+                let result = persistantData.fetchListOfCounters()
+                
+                result?.forEach({ (counter) in
+                    
+                    let counterCopy = Counter()
+                    counterCopy.mCount = 0
+                    counterCopy.mId = counter.mId
+                    counterCopy.mTitle = counter.mTitle
+                    counterCopy.mCounterState =   CounterState()
+                   _ = persistantData.persistAndUpdateCounter(counter: counterCopy)
+                    
+                    
+                })
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }
             
         })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        warning.addAction(ok)
+        warning.addAction(cancel)
+        
+        self.present(warning, animated: true, completion:  nil)
+        
+        
+        //
+        
+       
         
         
         
@@ -144,13 +173,46 @@ class SettingViewController: UITableViewController, Storyboarded, MFMailComposeV
         
         let persistantData = PersistantDataManager.shared
         
-        persistantData.deleteAll()
+        
+        let warning = UIAlertController(title: "Delete All Counters", message: "All the counters available would be deleted permanently!", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default, handler: {
+            
+         action in
+            
+            switch action.style{
+                case .default:
+                   persistantData.deleteAll()
+                
+                case .cancel:
+                    print("cancel")
+                
+                case .destructive:
+                    print("destructive")
+                
+                
+            }
+            
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        warning.addAction(ok)
+        warning.addAction(cancel)
+        
+        self.present(warning, animated: true, completion:  nil)
+        
+//        persistantData.deleteAll()
         
         
         // show an alert that you have reset all the data from the realm
         
         
     }
+    
+    
+    
+    
+    
     
     
     func suggestAFeature(){
@@ -200,7 +262,7 @@ class SettingViewController: UITableViewController, Storyboarded, MFMailComposeV
     }
     
     func showMailError(){
-        let sendMailError = UIAlertController(title: "Couldn't Send the email", message: "blah blah", preferredStyle: .alert)
+        let sendMailError = UIAlertController(title: "Couldn't Send the email", message: "Something went wrong", preferredStyle: .alert)
         
         let dismiss = UIAlertAction(title: "OK", style: .default, handler: nil)
         

@@ -86,9 +86,29 @@ class PersistantDataManager: PresitantDataManagerProtocol{
     
     func deleteAll(){
         
-        try! realm.write {
-            realm.deleteAll()
+        
+      let allCounters =  fetchListOfCounters()
+        
+        do{
+            
+            try realm.write {
+                
+                allCounters?.forEach({ (counter) in
+                    realm.delete(counter)
+                })
+            
+            
+            }
+            
+        }catch{
+            
+            // do error handling
+            
         }
+        
+        
+        
+    
         
     }
     
