@@ -1,7 +1,7 @@
 # Auto Counter
 
 
-“Have you ever been working out and had to remember to tap on the ‘counter app’ to monitor your execrise. I know it's a major inconvenience. With Auto Counter, you don’t anymore.“
+“Have you ever been working out and had to remember to tap on the ‘counter app’ regurlarly between your execrise. I know it's a major inconvenience. With Auto Counter, you don’t anymore.“
 Auto Counter app let you count automatically and manually.
 
 
