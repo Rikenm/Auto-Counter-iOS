@@ -8,7 +8,7 @@ Auto Counter app let you count automatically and manually.
 #Previews
 
 ![Alt Text](https://media.giphy.com/media/finuaLjZwZSYyRsapA/giphy.gif)
-
+![Alt Text](https://media.giphy.com/media/63IzwQWLoRMidYnM0t/giphy.gif)
 
 
 ## Getting Started
