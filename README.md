@@ -11,6 +11,11 @@ Auto Counter app let you count automatically and manually.
 ![Alt Text](https://media.giphy.com/media/63IzwQWLoRMidYnM0t/giphy.gif)
 ![Alt Text](https://media.giphy.com/media/LpGJ4wSfcfkV7dJObD/giphy.gif)
 
+
+## Project Architecture
+Project uses MVVM pattern with the help of RXSwift. It also uses the coordinator pattern for the navigation. 
+
+
 ## Getting Started
 
 i) Either Download the app from the app store 
