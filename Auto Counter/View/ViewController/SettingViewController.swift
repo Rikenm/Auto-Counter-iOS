@@ -64,8 +64,8 @@ class SettingViewController: UITableViewController, Storyboarded, MFMailComposeV
         
         if indexPath.section == 0 && indexPath.row == 1 {
             // rate this app
-            
-            rateApp(appId: "id959379869") { success in
+           
+            rateApp(appId: "id1441227026") { success in
                 print("RateApp \(success)")
             }
             
